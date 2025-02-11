@@ -1,0 +1,208 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+}
+.all-content{
+  background: #f7f5f2;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #F5F5DC !important; /* Warna Beige */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    color: #8B0000 !important; /* Warna merah gelap */
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Warna tulisan di navbar */
+.navbar .nav-links li a {
+    color: #b38787 !important; /* Warna merah gelap */
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+/* Warna saat hover */
+.navbar .nav-links li a:hover {
+    background-color: #D4AF37 !important; /* Warna emas */
+    color: white !important; /* Warna teks saat hover */
+}
+
+/* Navbar Link Normal */
+.navbar-nav .nav-item .nav-link {
+    color: #8B0000; /* Warna teks normal */
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+/* Hover pada Navbar (Hanya Warna Teks, Tidak Blok) */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #B22222; /* Warna lebih terang */
+    
+}
+
+/* Aktif Link di Navbar */
+.navbar-nav .nav-item .nav-link.active {
+    color: #B22222;
+    font-weight: bold;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+    background-color: #F5F5DC; /* Warna background dropdown */
+    border: none;
+}
+
+/* Dropdown Item Normal */
+.navbar .dropdown-menu .dropdown-item {
+    color: #8B0000; /* Warna teks normal */
+    transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
+}
+
+/* Hover pada Dropdown Item */
+.navbar .dropdown-menu .dropdown-item:hover {
+    color: #B22222; /* Warna lebih terang */
+    font-weight: bold; /* Menebalkan teks */
+}
+
+#logo img{
+    border-radius: 10px;
+    width: 160px;
+    margin-left: 40px;
+  }
+/* home content */
+#home{
+    width: 100%;
+    height: 90vh;
+    background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./images/bc3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 80%;
+    font-family: 'Roboto', sans-serif;
+}
+.content{
+  padding-top: 210px;
+  margin-left: 56px;
+}
+.content h3{
+  font-size: 50px;
+  color: white;
+}
+.content p{
+  margin-top: 10px;
+  color: white;
+}
+#btn{
+  width: 150px;
+  height: 36px;
+  margin-top: 20px;
+  background: white;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#btn:hover{
+  background: #b2744c;
+  color: white;
+}
+/* home content */
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .navbar .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .navbar .nav-links li {
+        width: 100%;
+    }
+    
+    .navbar .nav-links li a {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* about */
+#about{
+    width: 100%;
+    height: 100vh;
+    background: #f7f5f2;
+    font-family: 'Roboto', sans-serif;
+  }
+  #about .container{
+    padding-top: 70px;
+  }
+  .heading{
+    text-align: center;
+    margin-bottom: 50px;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .heading span{
+    color: #b2744c;
+  }
+  #about .card{
+    border-radius: 10px;
+  }
+  #about .card img{
+    border-radius: 10px;
+  }
+  #about-btn{
+    width: 200px;
+    height: 36px;
+    background: transparent;
+    border: 2px solid #b2744c;
+    color: #b2744c;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  #about-btn:hover{
+    background: #b2744c;
+    color: white;
+  }
+  @media screen and (max-width:982px){
+    #about p{
+      font-size: 8px;
+    }
+  }
+  @media screen and (max-width:766px){
+    #about p{
+      font-size: 15px;
+    }
+    #about{
+      height: 120vh;
+    }
+  }
+  /* about */
+  
