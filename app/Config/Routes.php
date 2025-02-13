@@ -1,0 +1,1 @@
+$routes->get('/produk', 'Produk::index'); 

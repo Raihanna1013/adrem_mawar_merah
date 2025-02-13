@@ -53,6 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['admin/dashboard'] = 'admin/Dashboard/index';
 $route['translate_uri_dashes'] = FALSE;
+$route['produk'] = 'produk/index';
 
 //session
 $config['sess_driver'] = 'files';
