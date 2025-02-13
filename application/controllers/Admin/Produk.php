@@ -25,7 +25,7 @@ class Produk extends CI_Controller
             $this->form_validation->set_rules('harga_barang', 'Harga Barang', 'required|numeric');
             $this->form_validation->set_rules('jumlah_barang', 'Jumlah Barang', 'required|numeric');
             $this->form_validation->set_rules('deskripsi_barang', 'Deskripsi Barang', 'required');
-            $this->form_validation->set_rules('link_produk', 'Link Produk', 'required');
+            $this->form_validation->set_rules('link_produk', 'Link Produk');
         
             if ($this->form_validation->run() === FALSE) {
                 // Jika validasi gagal, kembali ke form

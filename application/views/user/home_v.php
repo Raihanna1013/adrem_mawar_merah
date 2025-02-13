@@ -30,7 +30,7 @@
     <div class="menu-item dropdown">
       <span>Tentang Kami</span>
       <div class="dropdown-menu">
-        <a href="<?= base_url('profil-usaha'); ?>" class="dropdown-item">Profil Usaha</a>
+        <a href="<?= base_url('tentang_kami'); ?>" class="dropdown-item">Profil Usaha</a>
         <a href="<?= base_url('organisasi'); ?>" class="dropdown-item">Organisasi</a>
         <a href="<?= base_url('sertifikat'); ?>" class="dropdown-item">Sertifikat</a>
       </div>
@@ -38,7 +38,6 @@
     
     <a href="<?= base_url('produk'); ?>" class="menu-item">Produk</a>
     
-    <a href="<?= base_url('cara-pesan'); ?>" class="menu-item">Cara Pesan</a>
     
     <div class="menu-item dropdown">
       <span>Berita</span>
@@ -48,21 +47,29 @@
       </div>
     </div>
     
-    <a href="<?= base_url('galeri-foto'); ?>" class="menu-item">Galeri Foto</a>
+    <a href="<?= base_url('galeri'); ?>" class="menu-item">Galeri Foto</a>
   </div>
 </nav>
 
 <!-- Headline -->
-<section id="home">
-            <div class="content">
-                <h3>Lihat Etalase Produk Kami</h3>
-                <p>Temukan berbagai produk berkualitas dengan kemasan unik.</p>
-                <button id="btn">Lihat Produk</button>
-            </div>
-        </section>
+      <!-- home section -->
+      <section class="home-section">
+    <div class="content">
+      <h3>Start Your Day With a <br> Fresh Coffee</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, fugit
+         <br>ipsum dolor sit amet consectetur.
+      </p>
+      <button id="btn" >Shop Now</button>
+    </div>
+   </section>
 
-        <!-- Widget Produk -->
-        <div class="container">
+<!-- home section -->
+
+    </div>
+
+      <!-- Widget Produk -->
+      <section class="widget-section">
+      <div class="container">
             <!-- Widget 1: Lihat Etalase Produk Kami -->
             <div class="widget red">
                 <br>
@@ -83,33 +90,25 @@
                 </div>
             </div>
         </div>
-    </div>
+        </section>
  <!-- Produk Adrem -->
 <!-- Tentang adrem -->
 <!-- about section -->
-<div class="about" id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <img src="asset/image/logoadrem.png" alt="About Us Image">
+<!-- about section -->
+<div class="container">
+<section class="about-section">
+        <div class="about-image">
+            <img src="<?= base_url('images/adrem.jpg'); ?>" alt="Adrem Mawar Merah">
         </div>
-      </div>
-      <div class="col-md-6">
-        <h3>Tentang Adrem Mawar Merah</h3>
-        <p>Adrem Mawar Merah adalah UMKM yang bergerak di bidang kuliner tradisional, khususnya dalam pembuatan kue adrem yang lezat dan berkualitas. Kami berkomitmen untuk melestarikan cita rasa asli Indonesia dengan sentuhan modern.
-          <br><br>
-          Setiap produk kami dibuat dengan bahan-bahan pilihan berkualitas tinggi dan diproses dengan standar kebersihan yang ketat. Kami menggabungkan resep tradisional dengan inovasi untuk menghasilkan kue adrem yang tidak hanya lezat, tetapi juga sehat dan aman dikonsumsi.
-          <br><br>
-      
-        <button id="about-btn">Pelajari Lebih Lanjut</button>
-      </div>
-    </div>
-  </div>
+        <div class="about-content">
+            <h2>Tentang Adrem<br>Mawar Merah</h2>
+            <p>Lorem ipsum dolor sit amet consectetur. Risus venenatis molestie sed tellus mauris sed fermentum egestas amet. Dapibus tincidunt pellentesque posuere accumsan.</p>
+            <a href="Tentang_Kami" class="info-button">Info Lebih Lanjut</a>
+        </div>
+    </section>
 </div>
-
 <!-- Location Section - dipindahkan ke sini -->
-<div class="location" id="location">
+<section class="location-section">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
@@ -145,10 +144,10 @@
     </div>
   </div>
 </div>
-</div>
+</section>
 
 <!-- News Section -->
-<div class="news-section">
+<section class="news-section">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -211,10 +210,10 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Gallery Section -->
-<div class="gallery-section">
+<section class="gallery-section">
   <div class="container">
     <div class="gallery-grid">
       <div class="gallery-item">
@@ -253,7 +252,7 @@
       <!-- Tambahkan item galeri lainnya dengan pola yang sama -->
     </div>
   </div>
-</div>
+</section>
 
 <!-- Modal Gallery -->
 <div id="galleryModal" class="modal">

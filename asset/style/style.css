@@ -38,17 +38,18 @@
 .navbar-brand {
   margin-left: 50px;
   margin-right: 80px;
+  padding-left: 25px;
 }
 
 .navbar-brand img {
   height: 40px;
-  width: auto;
+  width: 50px;
 }
 
 .menu-container {
   display: flex;
   justify-content: flex-start;
-  gap: 25px;
+  gap: 8px;
 }
 
 .menu-item {
@@ -56,6 +57,7 @@ color: #B22222;
 text-decoration: none;
 font-size: 14px;
 position: relative;
+padding-right: 25px;
 }
 
 .menu-item.dropdown::after {
@@ -77,13 +79,14 @@ position: absolute;
 top: 100%;
 left: 0;
 background: #FDF6E7;
-border: 1px solid #ddd;
+/* border: 1px solid #ddd; */
 min-width: 150px;
 z-index: 1000;
 }
 
 .menu-item:hover .dropdown-menu {
 display: block;
+background-color: #FDF6E7;
 }
 
 .dropdown-item {
@@ -96,36 +99,79 @@ font-size: 13px;
 
 .dropdown-item:hover {
 background: #B22222;
-color: white;
+color: #FDF6E7;
 }
 
-
-/* Home Content */
-#home {
+#home{
   width: 100%;
   height: 90vh;
+  background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./images/bc3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 80%;
+  font-family: 'Roboto', sans-serif;
+}
+.content{
+padding-top: 210px;
+margin-left: 56px;
+}
+.content h3{
+font-size: 50px;
+color: white;
+}
+.content p{
+margin-top: 10px;
+color: white;
+}
+#btn{
+width: 150px;
+height: 36px;
+margin-top: 20px;
+background: white;
+border-radius: 5px;
+font-weight: bold;
+border: none;
+transition: 0.5s ease;
+cursor: pointer;
+}
+#btn:hover{
+background: #b2744c;
+color: white;
+}
+/* home content */
+/* galeri Content */
+#galeri {
+  width: 100%;
+  height: 40vh;
   background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
+  text-align: center;
   align-items: center;
-  padding-left: 56px;
+  padding-left: 380px;
 }
 
 .content {
   color: white;
-}
+  align-items: center;
+  text-align: center;
+
+} 
 
 .content h3 {
-  font-size: 50px;
-  font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  align-items: center;
 }
 
 .content p {
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 400;
+  
 }
 
 #btn {
@@ -145,10 +191,66 @@ color: white;
   color: white;
 }
 
+/* about */
+#about{
+  width: 100%;
+  height: 100vh;
+  background: #f7f5f2;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 50px;
+}
+#about .container{
+  padding-top: 70px;
+}
+.heading{
+  text-align: center;
+  margin-bottom: 50px;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+}
+.heading span{
+  color: #b2744c;
+}
+#about .card{
+  border-radius: 10px;
+}
+#about .card img{
+  border-radius: 10px;
+}
+#about-btn{
+  width: 200px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid #b2744c;
+  color: #b2744c;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+}
+#about-btn:hover{
+  background: #b2744c;
+  color: white;
+}
+@media screen and (max-width:982px){
+  #about p{
+    font-size: 8px;
+  }
+}
+@media screen and (max-width:766px){
+  #about p{
+    font-size: 15px;
+  }
+  #about{
+    height: 120vh;
+  }
+}
+/* about */
 /* Layout utama */
 .container {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
@@ -1263,4 +1365,500 @@ color: white;
 .page-item.active .page-link:hover {
   background-color: #B22222;
 }
+
+/* Product Detail Section */
+.product-detail-section {
+    display: grid;
+    grid-template-columns: 300px 1fr 400px;
+    gap: 30px;
+    margin: 20px 0;
+    padding: 20px;
+    height: ;
+}
+
+.main-image {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 10px;
+}
+
+.thumbnail-images img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.product-info h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.detail-product h3 {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.detail-product ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detail-product li {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.link-blue {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.description {
+    margin-top: 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Order Section */
+.order-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.whatsapp {
+    background: #E8F8F1;
+    color: #25D366;
+}
+
+.instagram {
+    background: #FFE4E4;
+    color: #E4405F;
+}
+
+.shopee {
+    background: #FFEEE3;
+    color: #EE4D2D;
+}
+
+/* Recommendations Section */
+.recommendations {
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.view-all {
+    color: #666;
+    text-decoration: none;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.category {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.rating {
+    color: #ffd700;
+    margin: 5px 0;
+}
+
+.price-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.discount {
+    color: #B22222;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-detail-container {
+    display: grid;
+    grid-template-columns: 450px 1fr 300px;
+    gap: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Product Images */
+.product-images {
+    width: 100%;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.thumbnail-list {
+    display: flex;
+    gap: 10px;
+}
+
+.thumb-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #eee;
+}
+
+/* Product Info */
+.product-info {
+    padding-right: 20px;
+}
+
+.product-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.product-details h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.product-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-details li {
+    margin-bottom: 12px;
+    color: #666;
+    font-size: 16px;
+}
+
+.product-details span {
+    font-weight: 500;
+    color: #333;
+}
+
+.etalase-link {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.product-description {
+    margin-top: 25px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Order Section */
+.order-section {
+    background: #fffff2;
+    padding: 20px;
+    border-radius: 10px;
+    height: 65%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-title {
+    background: #B22222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.whatsapp {
+    background: #E8F8F1;
+    color: #25D366;
+}
+
+.instagram {
+    background: #FFE4E4;
+    color: #E4405F;
+}
+
+.shopee {
+    background: #FFEEE3;
+    color: #EE4D2D;
+}
+
+.btn-order img {
+    width: 20px;
+    height: 20px;
+}
+
+/* About Section Styles */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 0 0 400px;
+    text-align: center; /* Center image */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.about-content {
+    flex: 0 0 400px;
+    text-align: left;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.info-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #B22222;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.info-button:hover {
+    background-color: #8B0000;
+}
+
+/* Container untuk memastikan konten di tengah */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .about-image,
+    .about-content {
+        flex: 0 0 100%;
+        max-width: 600px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-section {
+        padding: 30px 15px;
+    }
+
+    .about-content h2 {
+        font-size: 28px;
+    }
+}
+
+/* Section Spacing */
+.home-section,
+.widget-section,
+.about-section,
+.location-section,
+.news-section,
+.gallery-section {
+    margin-bottom: 50px; /* Jarak antar section */
+}
+
+/* Home Section */
+.home-section {
+    padding-top: 50px; /* Jarak dari navbar */
+}
+
+/* Widget Section */
+.widget-section {
+    padding: 30px 0;
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px 0;
+}
+
+/* Location Section */
+.location-section {
+    background-color: #B22222;
+    padding: 30px 0;
+}
+
+/* News Section */
+.news-section {
+    padding: 30px 0;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 30px 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Responsive Spacing */
+@media (max-width: 768px) {
+    .home-section,
+    .widget-section,
+    .about-section,
+    .location-section,
+    .news-section,
+    .gallery-section {
+        margin-bottom: 30px; /* Mengurangi jarak di mobile */
+        padding: 20px 0;
+    }
+
+    .home-section {
+        padding-top: 30px;
+    }
+}
+
+/* Rest of your existing styles remain the same ... */
 

@@ -7,12 +7,21 @@
     <link rel="stylesheet" href="<?= base_url('asset/style/style.css'); ?>">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-brand">
             <a href="<?= base_url(); ?>">
                 <img src="<?= base_url('images/logo.png'); ?>" alt="Logo" class="logo">
             </a>
         </div>
+        
+        <!-- Hamburger Menu -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <div class="nav-menu">
             <a href="<?= base_url(); ?>" class="nav-link">Beranda</a>
             <a href="#" class="nav-link">Tentang Kami</a>
@@ -23,40 +32,111 @@
         </div>
     </nav>
 
-    <div class="detail-container">
-        <div class="product-detail">
-            <div class="product-images">
-                <div class="main-image">
-                    <img src="<?= base_url('uploads/products/adrem-mawar.jpg'); ?>" alt="Adrem Mawar Merah">
+    <!-- Main Content -->
+    <div class="container">
+        <div class="product-detail-wrapper">
+            <!-- Left Side - Product Images -->
+            <div class="product-gallery">
+                <div class="main-image-container">
+                    <img src="<?= base_url('uploads/products/adrem-merah.jpg'); ?>" alt="Adrem Merah" class="main-product-image">
                 </div>
-                <div class="thumbnail-images">
-                    <img src="<?= base_url('uploads/products/adrem-mawar-1.jpg'); ?>" alt="Thumbnail 1">
-                    <img src="<?= base_url('uploads/products/adrem-mawar-2.jpg'); ?>" alt="Thumbnail 2">
-                    <img src="<?= base_url('uploads/products/adrem-mawar-3.jpg'); ?>" alt="Thumbnail 3">
+                <div class="thumbnail-list">
+                    <img src="<?= base_url('uploads/products/thumb1.jpg'); ?>" class="thumb-img">
+                    <img src="<?= base_url('uploads/products/thumb2.jpg'); ?>" class="thumb-img">
+                    <img src="<?= base_url('uploads/products/thumb3.jpg'); ?>" class="thumb-img">
                 </div>
             </div>
-            <div class="product-info-detail">
-                <h1 class="product-title">Adrem Mawar Merah</h1>
-                <p class="product-price">Rp 82.000</p>
-                <div class="product-description">
-                    <h3>Deskripsi Produk:</h3>
-                    <p>Jaket Adrem Mawar Merah dengan kombinasi warna hijau dan kuning. Dibuat dengan bahan berkualitas tinggi yang nyaman dipakai.</p>
-                    
-                    <h3>Spesifikasi:</h3>
-                    <ul>
-                        <li>Bahan: Cotton premium</li>
-                        <li>Ukuran: M, L, XL</li>
-                        <li>Warna: Merah, Hijau, Kuning</li>
-                    </ul>
+
+            <!-- Middle - Product Info -->
+            <div class="product-info">
+                <h1 class="product-title">Adrem Merah</h1>
+                <div class="product-price">Rp 82.000</div>
+                
+                <div class="detail-section">
+                    <h3>Detail Product</h3>
+                    <div class="product-details">
+                        <p><span>Kondisi:</span> Baru</p>
+                        <p><span>Min. Pemesanan:</span> 1 Buah</p>
+                        <p><span>Etalase:</span> <a href="#" class="category-link">Baju Santai</a></p>
+                    </div>
                 </div>
-                <div class="product-actions">
-                    <button class="btn-whatsapp-large">
+
+                <p class="description">
+                    Lorem ipsum dolor sit amet consectetur. Risus venenatis molestie sed tellus mauris 
+                    sed fermentum egestas amet. Dapibus tincidunt pellentesque posuere accumsan.
+                </p>
+            </div>
+
+            <!-- Right Side - Order Options -->
+            <div class="order-options">
+                <h3 class="order-title">Dapat Pesan Di</h3>
+                <div class="order-buttons">
+                    <a href="#" class="btn-order wa">
                         <img src="<?= base_url('images/whatsapp.png'); ?>" alt="WhatsApp">
-                        Pesan Sekarang
-                    </button>
+                        Pesan Lewat WA
+                    </a>
+                    <a href="#" class="btn-order dm">
+                        <img src="<?= base_url('images/instagram.png'); ?>" alt="Instagram">
+                        Pesan Lewat DM
+                    </a>
+                    <a href="#" class="btn-order shopee">
+                        <img src="<?= base_url('images/shopee.png'); ?>" alt="Shopee">
+                        Pesan Lewat Shopee
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="recommendations">
+            <div class="section-header">
+                <h2>Recommendation For You</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="product-grid">
+                <!-- Product Card -->
+                <div class="product-card">
+                    <img src="<?= base_url('uploads/products/jacket.jpg'); ?>" alt="Color Full Jacket">
+                    <div class="product-details">
+                        <h3>Color Full Jacket</h3>
+                        <div class="product-meta">
+                            <span class="category">Unisex Jacket</span>
+                            <div class="rating">★★★★☆ (52)</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">Rp 82.000</span>
+                            <span class="discount">-40%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Footer content here -->
+        </div>
+    </footer>
+
+    <!-- Add JavaScript at the bottom of the body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html> 

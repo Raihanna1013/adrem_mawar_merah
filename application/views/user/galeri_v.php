@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrem Merah | Detail Produk</title>
+    <title>Document</title>
     <link rel="stylesheet" href="asset/style/style.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- Bootstrap 5.3 CSS -->
@@ -17,7 +17,7 @@
 </head>
 <body>
 <nav class="navbar">
-<a href="<?= base_url(); ?>" class="navbar-brand">
+ <a href="<?= base_url(); ?>" class="navbar-brand">
     <img src="<?= base_url('asset/image/logoadrem.png'); ?>" alt="Logo">
   </a>
   <div class="menu-container">
@@ -46,86 +46,70 @@
     <a href="<?= base_url('galeri'); ?>" class="menu-item">Galeri Foto</a>
   </div>
 </nav>
-<!-- Main Content -->
-        <div class="product-detail-container">
-            <!-- Left Side - Product Images -->
-            <div class="product-images">
-                <div class="main-image">
-                    <img src="<?= base_url('asset/image/adrem.ong'); ?>" alt="Adrem Merah">
-                </div>
-                <div class="thumbnail-list">
-                    <img src="<?= base_url('uploads/products/thumb1.jpg'); ?>" class="thumb-img">
-                    <img src="<?= base_url('uploads/products/thumb2.jpg'); ?>" class="thumb-img">
-                    <img src="<?= base_url('uploads/products/thumb3.jpg'); ?>" class="thumb-img">
-                </div>
-            </div>
 
-            <!-- Right Side - Product Info -->
-            <div class="product-info">
-                <h1 class="product-title">Adrem Merah</h1>
-                <div class="product-price">Rp 82.000</div>
-                
-                <div class="product-details">
-                    <h2>Detail Product</h2>
-                    <ul>
-                        <li><span>Kondisi:</span> Baru</li>
-                        <li><span>Min. Pemesanan:</span> 1 Buah</li>
-                        <li><span>Etalase:</span> <a href="#" class="etalase-link">Baju Santai</a></li>
-                    </ul>
-                </div>
-
-                <div class="product-description">
-                    <p>Lorem ipsum dolor sit amet consectetur. Risus venenatis molestie sed tellus mauris sed fermentum egestas amet. Dapibus tincidunt pellentesque posuere accumsan.</p>
-                </div>
+<section id="galeri">
+            <div class="content">
+                <h3>Lihat Etalase Produk Kami</h3>
             </div>
+        </section>
 
-            <!-- Order Section -->
-            <div class="order-section">
-                <h3 class="order-title">Dapat Pesan Di</h3>
-                <div class="order-buttons">
-                    <a href="#" class="btn-order whatsapp">
-                        <img src="<?= base_url('images/whatsapp.png'); ?>" alt="WhatsApp">
-                        Pesan Lewat WA
-                    </a>
-                    <a href="#" class="btn-order instagram">
-                        <img src="<?= base_url('images/instagram.png'); ?>" alt="Instagram">
-                        Pesan Lewat DM
-                    </a>
-                    <a href="#" class="btn-order shopee">
-                        <img src="<?= base_url('images/shopee.png'); ?>" alt="Shopee">
-                        Pesan Lewat Shopee
-                    </a>
-                </div>
-            </div>
+<div class="gallery-section">
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-card">
+          <img src="asset/image/adrem.png" alt="Tempat Wisata Yogyakarta Terbaru Hits">
+          <div class="badge info">INFO</div>
+          <div class="gallery-overlay">
+            <h4>Tempat Wisata Yogyakarta Terbaru Hits</h4>
+            <span class="date">21 December 2023</span>
+          </div>
         </div>
-</di>
+      </div>
 
-        <!-- Recommendations -->
-        <div class="recommendations">
-            <div class="section-header">
-                <h2>Recommendation For You</h2>
-                <a href="#" class="view-all">View All</a>
-            </div>
-            <div class="product-grid">
-                <!-- Product Card -->
-                <div class="product-card">
-                    <img src="<?= base_url('uploads/products/jacket.jpg'); ?>" alt="Color Full Jacket">
-                    <div class="product-details">
-                        <h3>Color Full Jacket</h3>
-                        <p class="category">Unisex Jacket</p>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(52)</span>
-                        </div>
-                        <div class="price-tag">
-                            <span class="price">Rp 82.000</span>
-                            <span class="discount">-40%</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Repeat similar product cards for other recommendations -->
-            </div>
+      <div class="gallery-item">
+        <div class="gallery-card">
+          <img src="path/to/image2.jpg" alt="Ruang Lukisan Keraton Yogyakarta">
+          <div class="badge info">INFO</div>
+          <div class="gallery-overlay">
+            <h4>Ruang Lukisan Keraton Yogyakarta</h4>
+            <span class="date">13 June 2024</span>
+          </div>
         </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-card">
+          <img src="path/to/image3.jpg" alt="Wisata Lebaran di Yogyakarta">
+          <div class="badge info">INFO</div>
+          <div class="gallery-overlay">
+            <h4>Wisata Lebaran di Yogyakarta</h4>
+            <span class="date">April 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tambahkan item galeri lainnya dengan pola yang sama -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal Gallery -->
+<div id="galleryModal" class="modal">
+  <span class="close-modal" onclick="closeModal()">&times;</span>
+  <button class="modal-prev" onclick="changeSlide(-1)">&#10094;</button>
+  <button class="modal-next" onclick="changeSlide(1)">&#10095;</button>
+  
+  <div class="modal-content">
+    <img id="modalImage" src="">
+    <div class="modal-caption">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDate"></p>
+    </div>
+    <button class="load-more">Tampilkan Lebih Banyak</button>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="container">

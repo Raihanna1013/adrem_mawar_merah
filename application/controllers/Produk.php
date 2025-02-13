@@ -35,9 +35,7 @@
         }
 
 
-        public function detail_produk(){
-            $this->load->view('user/detailproduk_v');
-        }
+       
     }
 
 ?>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrem Mawar Merah</title>
+    <title>Document</title>
     <link rel="stylesheet" href="asset/style/style.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- Bootstrap 5.3 CSS -->
@@ -47,45 +47,10 @@
   </div>
 </nav>
 
-        <div class="search-container">
-            <button class="kategori-button">
-                <span>Kategori</span>
-                <img src="path/to/menu-icon.svg" alt="menu icon">
-            </button>
-            
-            <div class="search-wrapper">
-                <input type="text" class="search-input" placeholder="Blouse">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
+<section id="galeri">
+            <div class="content">
+                <h3>Lihat Etalase Produk Kami</h3>
             </div>
-        </div>
-    <div class="products-container">
-        <div class="products-grid" width="301px">
-            <div class="product-card">
-            <div class="product-info">
-            <img src="asset/image/adrem.png" alt="Adrem Mawar Merah" width="200px" height="200px" >
-                <h3 class="product-name">Adrem Mawar Merah</h3>
-                <p class="product-price">Rp 82.000</p>
-               <div class="product-actions">
-                    <a href="detail_produk" class="btn-detail" align-items ="center">Lihat Detail</a>
-                  </div> 
-                  <br>
-                  <div class="product-actions">
-                    <a href="#" class="btn-whatsapp">
-                        <img src="whatsapp-icon.svg" alt="WhatsApp" class="whatsapp-icon">
-                        Pesan Sekarang
-                    </a>
-                </div>
-                  
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+        </section>
 </body>
 </html>
