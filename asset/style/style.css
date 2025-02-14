@@ -649,9 +649,9 @@ color: white;
   transition: 0.3s;
 }
 
-.read-more-btn:hover {
+/* .read-more-btn:hover {
   background-color: #8B0000;
-}
+} */
 
 .news-listings {
   background: white;
@@ -697,20 +697,37 @@ color: white;
 }
 
 .read-btn {
-  background-color: #fbe9e7;
-  color: #B22222;
+  background-color: #B22222;
+  color: #fbe9e7;
   padding: 8px 20px;
   border: none;
   border-radius: 5px;
   font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 
-.read-btn:hover {
+/* .read-btn:hover {
   background-color: #B22222;
   color: white;
+} */
+
+.read-btn-2 {
+  background-color: #B22222;
+  color: #fbe9e7;
+  padding: 8px 0px;
+  border: none;
+  width: 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  /* transition: 0.3s; */
 }
+
+/* .read-btn:hover-2 {
+  background-color: #B22222;
+  color: white;
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1861,4 +1878,269 @@ color: white;
 }
 
 /* Rest of your existing styles remain the same ... */
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 30px;
+}
 
+.pagination li {
+  list-style: none;
+}
+
+.pagination .page-link {
+  display: block;
+  padding: 8px 16px;
+  color: #B22222;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.pagination .active .page-link {
+  background-color: #B22222;
+  color: #fff;
+  border-color: #B22222;
+}
+
+.pagination .page-link:hover:not(.active) {
+  background-color: #f5f5f5;
+  color: #B22222;
+}
+
+.pagination .disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Responsive Pagination */
+@media (max-width: 576px) {
+  .pagination .page-link {
+      padding: 6px 12px;
+      font-size: 14px;
+  }
+}
+
+/* News Page Styles - Berbeda dengan Home News Section */
+.news-page {
+    background-color: #fff;
+}
+
+.news-page-header {
+    background-color: #B22222;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-page-header h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.news-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: #FFD700;
+    border-radius: 100% 0 0 0;
+}
+
+.news-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.news-page-item {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.news-page-image {
+    flex: 0 0 200px;
+}
+
+.news-page-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.news-page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-page-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.news-page-date {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.news-page-date i {
+    margin-right: 5px;
+}
+
+.news-page-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #B22222;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+
+.news-page-button:hover {
+    background-color: #8B0000;
+}
+
+/* Pagination Styles */
+.news-page-pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.news-page-pagination .pagination {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.news-page-pagination .page-item {
+    margin: 0;
+}
+
+.news-page-pagination .page-link {
+    display: block;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    color: #B22222;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.news-page-pagination .page-item.active .page-link {
+    background: #B22222;
+    color: white;
+    border-color: #B22222;
+}
+
+.news-page-pagination .page-link:hover:not(.active) {
+    background: #f5f5f5;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .news-page-item {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .news-page-image {
+        flex: 0 0 auto;
+    }
+
+    .news-page-content {
+        text-align: center;
+    }
+
+    .news-page-button {
+        align-self: center;
+    }
+
+    .news-page-header h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-page-container {
+        padding: 20px 15px;
+    }
+
+    .news-page-content h2 {
+        font-size: 20px;
+    }
+
+    .news-page-pagination .page-link {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Tambahkan di bagian News Page Styles */
+.no-news {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.news-page-pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.news-page-pagination .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+}
+
+.news-page-pagination .page-item {
+    margin: 0;
+}
+
+.news-page-pagination .page-link {
+    display: block;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    color: #B22222;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.news-page-pagination .page-item.active .page-link {
+    background: #B22222;
+    color: white;
+    border-color: #B22222;
+}
+
+.news-page-pagination .page-link:hover {
+    background: #f5f5f5;
+}

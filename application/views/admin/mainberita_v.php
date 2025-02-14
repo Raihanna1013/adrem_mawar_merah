@@ -121,7 +121,7 @@
         <h2>List Berita</h2>
 
         <!-- Tombol Tambah Produk -->
-        <a href="<?php echo site_url('admin/galeri/galeri_baru'); ?>" class="btn btn-primary mb-3">Tambah List Berita</a>
+        <a href="<?php echo site_url('admin/berita/berita_baru'); ?>" class="btn btn-primary mb-3">Tambah List Berita</a>
 
         <!-- Tabel Produk dengan Bootstrap -->
         <table class="table table-striped table-bordered">

@@ -153,6 +153,18 @@
             $this->db->delete('tbl_galeri');  // Ganti 'produk' dengan nama tabel produk yang sesuai
         }
         
+        public function count_berita() {
+            return $this->db->count_all('tbl_berita'); // Pastikan nama tabel sudah benar
+        }
+    
+        // Mengambil data berita dengan limit dan offset untuk pagination
+        public function get_berita_pagination($limit, $start) {
+            $this->db->limit($limit, $start);
+            $this->db->order_by('tanggal_berita', 'DESC'); // Urutkan berdasarkan tanggal (sesuaikan dengan field di tabel)
+            $query = $this->db->get('tbl_berita'); // Pastikan nama tabel sudah benar
+            return $query->result_array();
+        }
+
     }
 
 ?>
