@@ -20,7 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     
     public function tambah_galeri(){
-        $this->form_validation->set_rules('judul_galeri', 'Judul Galeri', 'required');
+        $this->form_validation->set_rules('judul_galeri', 'Judul Gambar', 'required');
+        $this->form_validation->set_rules('tanggal_galeri', 'Tanggal Foto diambil', 'required');
     
         if ($this->form_validation->run() === FALSE) {
             // Jika validasi gagal, kembali ke form
@@ -42,12 +43,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 // Ambil data yang diinputkan
                 $judulgaleri = $this->input->post('judul_galeri', TRUE);
                 $gambargaleri = $this->upload->data('file_name');
-    
+                $tglgaleri = $this->input->post('tanggal_galeri', TRUE);
                 // Konversi format tanggal ke YYYY-MM-DD HH:MM:SS
                 // $tglberita = date("Y-m-d H:i:s", strtotime($this->input->post('tanggal_berita', TRUE)));
     
                 // Simpan ke database
-                $insert_id = $this->Admin_model->insert_galeri($judulgaleri, $gambargaleri);
+                $insert_id = $this->Admin_model->insert_galeri($judulgaleri, $gambargaleri, $tglgaleri);
     
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Berita berhasil ditambahkan!');

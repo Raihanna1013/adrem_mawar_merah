@@ -47,10 +47,77 @@
   </div>
 </nav>
 
-<section id="galeri">
-            <div class="content">
-                <h3>Lihat Etalase Produk Kami</h3>
-            </div>
-        </section>
+<div class="galeri-page-header">
+        <h1>Galeri Produk UMKM Mawar Merah</h1>
+    </div>
+
+    
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Logo Column -->
+      <div class="footer-logo">
+        <img src="<?php echo base_url('asset/image/logoadrem.png'); ?>" alt="Logo">
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#" class="request-demo">Request Demo <i class="fas fa-arrow-right"></i></a></li>
+        </ul>
+      </div>
+
+      <!-- Our Service Column -->
+      <div class="footer-column">
+        <h3>Our Service</h3>
+        <ul>
+          <li><a href="#">Official Store</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">Style brand</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources Column -->
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Tutorials</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Column -->
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Integrations</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media Column -->
+      <div class="footer-column">
+        <h3>Social media</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <!-- Footer Bottom -->
+
+</footer>
+    
 </body>
 </html>

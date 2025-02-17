@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="asset/style/style.css?v=2">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- bootstrap links -->
 
 
     <!-- Font Poppin -->
@@ -43,7 +44,7 @@
       <span>Berita</span>
       <div class="dropdown-menu">
         <a href="<?= base_url('berita'); ?>" class="dropdown-item">Berita</a>
-        <a href="<?= base_url('galeri-foto'); ?>" class="dropdown-item">Galeri Foto</a>
+        <a href="<?= base_url('galeri'); ?>" class="dropdown-item">Galeri Foto</a>
       </div>
     </div>
     
@@ -52,20 +53,21 @@
 </nav>
 
 <!-- Headline -->
-      <!-- home section -->
-      <section class="home-section">
+<!-- home section -->
+<section id="home" >
+  
     <div class="content">
-      <h3>Start Your Day With a <br> Fresh Coffee</h3>
+      <h3>Start Your Day With <br> a Fresh Coffee</h3>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, fugit
          <br>ipsum dolor sit amet consectetur.
       </p>
-      <button id="btn" >Shop Now</button>
+      <br>
+      <a href="tentang_kami"  class="button">Info Lebih Lanjut</a>
     </div>
-   </section>
+</section>
 
 <!-- home section -->
 
-    </div>
 
       <!-- Widget Produk -->
       <section class="widget-section">
@@ -74,7 +76,7 @@
             <div class="widget red">
                 <br>
                 <h2>Lihat Etalase<br>Produk Kami</h2><br>
-                <button class="button">Lihat Produk</button>
+                <a href="produk" class="button">Lihat Produk</a>
                 <img class="product-image" src="asset/image/adrem.png" alt="Produk" />
             </div>
             <div class="right-column">
@@ -95,26 +97,33 @@
 <!-- Tentang adrem -->
 <!-- about section -->
 <!-- about section -->
-<div class="container">
-<section class="about-section">
-        <div class="about-image">
-            <img src="<?= base_url('images/adrem.jpg'); ?>" alt="Adrem Mawar Merah">
+<div class="about" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <img src="./asset/image/adrem.png" alt="">
         </div>
-        <div class="about-content">
-            <h2>Tentang Adrem<br>Mawar Merah</h2>
-            <p>Lorem ipsum dolor sit amet consectetur. Risus venenatis molestie sed tellus mauris sed fermentum egestas amet. Dapibus tincidunt pellentesque posuere accumsan.</p>
-            <a href="Tentang_Kami" class="info-button">Info Lebih Lanjut</a>
-        </div>
-    </section>
+      </div>
+      <div class="col-md-6">
+        <h3>What Makes Our Coffee Special?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum minima numquam porro consequuntur ipsum, nulla aliquam amet quam consequatur expedita.
+          <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque minus dicta quia maxime! Suscipit rerum similique non perferendis maiores rem, cumque explicabo exercitationem deserunt illum in aperiam natus impedit recusandae?
+          <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rem voluptates harum, quis excepturi voluptatum!
+         </p>
+         <a href="tentang_kami" id="about_button" class="button">Lebih Lanjut</a>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Location Section - dipindahkan ke sini -->
-<section class="location-section">
+<section class="location">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
         <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=YOUR_MAPS_EMBED_CODE"
+          <iframe
+           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.294926978352!2d110.2755814!3d-7.9684417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7b010b273afa23%3A0x9f840724e5c3ad6d!2sAdrem%20Mawar%20Merah%20Mbak%20Tini!5e0!3m2!1sid!2sid!4v1739712991227!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             width="100%" 
             height="450" 
             style="border:0;" 
@@ -126,24 +135,23 @@
       </div>
       <div class="col-md-5">
         <div class="location-content">
-          <h2>Temukan Kami disini!</h2>
-          <p>Hubungi Kontak dibawah ini untuk selengkapnya</p>
+          <h2>Temukan Kami di sini!</h2>
+          <p>Hubungi kontak di bawah ini untuk selengkapnya</p>
           <div class="social-links">
-            <a href="#" class="social-link">
-              <img src="path/to/whatsapp-icon.png" alt="WhatsApp">
+            <a href="https://wa.me/6282227175035" class="social-link">
+              <img src="asset/image/waputih1.png" alt="WhatsApp">
             </a>
-            <a href="#" class="social-link">
-              <img src="path/to/shopee-icon.png" alt="Shopee">
+            <a href="https://id.shp.ee/josziRe" class="social-link">
+              <img src="asset/image/shopeeputih2.png" alt="Shopee">
             </a>
-            <a href="#" class="social-link">
-              <img src="path/to/instagram-icon.png" alt="Instagram">
+            <a href="https://www.instagram.com/mawarmerah.umkm?igsh=eHowYjZyN2ZpODBy&utm_source=qr" class="social-link">
+              <img src="asset/image/igputih2.png" alt="Instagram">
             </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 <!-- News Section -->
@@ -154,105 +162,77 @@
         <div class="news-intro">
           <h2>Berita Terbaru</h2>
           <p>Ikuti terus informasi dan berita terbaru seputar Adrem Mawar Merah untuk mendapatkan update terkini.</p>
-          <button class="read-more-btn">Lihat Semua</button>
+          <a href="<?= base_url('berita') ?>" class="read-more-btn">Lihat Detail</a>
         </div>
       </div>
       <div class="col-md-8">
-        <div class="news-listings">
-          <div class="news-item">
-            <div class="news-info">
-              <h4>Pembukaan Cabang Baru Adrem Mawar Merah</h4>
-              <div class="news-meta">
-                <span><i class="far fa-calendar"></i> 20 Maret 2024</span>
-                <span><i class="far fa-user"></i> Admin</span>
-                <span><i class="far fa-folder"></i> Pengumuman</span>
-              </div>
-            </div>
-            <button class="read-btn">Baca Selengkapnya</button>
-          </div>
+    <div class="news-listings">
+        <?php if (!empty($berita)): ?>
+            <?php foreach ($berita as $item): ?>
+                <div class="news-item" style="display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #ddd;">
+                    <!-- Gambar kecil -->
+                    <div class="news-thumb" style="flex-shrink: 0;">
+                        <img src="<?= base_url('asset/img/' . (is_array($item) ? $item['gambar_berita'] : $item->gambar_berita)); ?>" 
+                             alt="Thumbnail Berita" 
+                             style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px;">
+                    </div>
+                    
+                    <!-- Informasi berita -->
+                    <div class="news-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="margin: 0; font-weight: bold;">
+                            <?= is_array($item) ? $item['judul_berita'] : $item->judul_berita; ?>
+                        </h4>
+                        <div class="news-meta" style="color: #777; font-size: 14px; margin: 5px 0;">
+                            <span>
+                                <i class="far fa-calendar"></i>
+                                <?= date('d F Y', strtotime(is_array($item) ? $item['tanggal_berita'] : $item->tanggal_berita)); ?>
+                            </span>
+                        </div>
+                    </div>
 
-          <div class="news-item">
-            <div class="news-info">
-              <h4>Promo Spesial Ramadhan</h4>
-              <div class="news-meta">
-                <span><i class="far fa-calendar"></i> 15 Maret 2024</span>
-                <span><i class="far fa-user"></i> Admin</span>
-                <span><i class="far fa-folder"></i> Promo</span>
-              </div>
+                    <!-- Tombol Baca Selengkapnya -->
+                    <div class="news-action">
+                        <button class="read-btn" style="background: #b22222; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+                            Baca Selengkapnya
+                        </button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="no-news">
+                <p>Belum ada berita yang tersedia.</p>
             </div>
-            <button class="read-btn">Baca Selengkapnya</button>
-          </div>
-
-          <div class="news-item">
-            <div class="news-info">
-              <h4>Menu Baru: Adrem Varian Coklat</h4>
-              <div class="news-meta">
-                <span><i class="far fa-calendar"></i> 10 Maret 2024</span>
-                <span><i class="far fa-user"></i> Admin</span>
-                <span><i class="far fa-folder"></i> Produk</span>
-              </div>
-            </div>
-            <button class="read-btn">Baca Selengkapnya</button>
-          </div>
-
-          <div class="news-item">
-            <div class="news-info">
-              <h4>Tips Menyimpan Kue Adrem Agar Tahan Lama</h4>
-              <div class="news-meta">
-                <span><i class="far fa-calendar"></i> 5 Maret 2024</span>
-                <span><i class="far fa-user"></i> Admin</span>
-                <span><i class="far fa-folder"></i> Tips</span>
-              </div>
-            </div>
-            <button class="read-btn">Baca Selengkapnya</button>
-          </div>
-        </div>
-      </div>
+        <?php endif; ?>
+    </div>
+</div>
     </div>
   </div>
 </section>
 
 <!-- Gallery Section -->
-<section class="gallery-section">
-  <div class="container">
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <div class="gallery-card">
-          <img src="asset/image/adrem.png" alt="Tempat Wisata Yogyakarta Terbaru Hits">
-          <div class="badge info">INFO</div>
-          <div class="gallery-overlay">
-            <h4>Tempat Wisata Yogyakarta Terbaru Hits</h4>
-            <span class="date">21 December 2023</span>
-          </div>
+<div class="gallery-section">
+    <div class="container">
+        <div class="gallery-grid">
+            <?php if (!empty($galeri)): ?>
+                <?php foreach ($galeri as $item): ?>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="<?= base_url('asset/img/' . $item['gambar_galeri']); ?>" alt="<?= $item['judul_galeri'] ?>">
+                            <div class="gallery-overlay">
+                                <h5 class="card-title"><?= $item['judul_galeri'] ?></h5>
+                                <p class="card-text"><small class="text-muted"><?= date('d F Y', strtotime($item['tanggal_galeri'])) ?></small></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="text-center">Tidak ada galeri yang tersedia.</p>
+            <?php endif; ?>
         </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-card">
-          <img src="path/to/image2.jpg" alt="Ruang Lukisan Keraton Yogyakarta">
-          <div class="badge info">INFO</div>
-          <div class="gallery-overlay">
-            <h4>Ruang Lukisan Keraton Yogyakarta</h4>
-            <span class="date">13 June 2024</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-card">
-          <img src="path/to/image3.jpg" alt="Wisata Lebaran di Yogyakarta">
-          <div class="badge info">INFO</div>
-          <div class="gallery-overlay">
-            <h4>Wisata Lebaran di Yogyakarta</h4>
-            <span class="date">April 2024</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tambahkan item galeri lainnya dengan pola yang sama -->
     </div>
-  </div>
-</section>
+
+    <!-- Pagination -->
+</div>
 
 <!-- Modal Gallery -->
 <div id="galleryModal" class="modal">
@@ -340,6 +320,6 @@
     <!-- Footer Bottom -->
 
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

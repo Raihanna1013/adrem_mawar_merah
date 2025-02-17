@@ -125,22 +125,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo site_url('admin/Dashboard'); ?>">Dashboard</a>
+                    <a class="nav-link active" href="<?php echo site_url('Admin/Dashboard'); ?>">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Produk'); ?>">Produk</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Produk'); ?>">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Berita'); ?>">Berita</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Berita'); ?>">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Galeri'); ?>">Galeri</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Tentang'); ?>">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('Admin/Galeri'); ?>">Galeri</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <form action="<?php echo site_url('admin/berita/tambah_berita'); ?>" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo site_url('Admin/Berita/tambah_berita'); ?>" method="POST" enctype="multipart/form-data">
     <label for="judul_berita">Judul Berita</label>
     <input type="text" id="judul_berita" name="judul_berita" required> <br>
 

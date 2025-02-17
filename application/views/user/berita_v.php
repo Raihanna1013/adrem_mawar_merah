@@ -48,13 +48,11 @@
 </nav>
 
 <div class="news-page">
-    <!-- Header Section -->
     <div class="news-page-header">
         <h1>Berita Adrem Merah</h1>
     </div>
 
-    <!-- News List Section -->
-    <div class="news-page-container">
+    <div class="news-page-container" id="news-container">
         <?php if(!empty($berita)): ?>
             <?php foreach($berita as $item): ?>
             <div class="news-page-item">
@@ -67,7 +65,9 @@
                         <i class="far fa-calendar"></i>
                         <?= date('d F Y', strtotime($item['tanggal_berita'])) ?>
                     </div>
-                    <a href="<?= base_url('berita/detail/'.$item['id_berita']) ?>" class="news-page-button">Selengkapnya</a>
+
+                    <br>
+                    <a href="<?= base_url('detail_berita/'.$item['id_berita']) ?>" class="news-page-button">Selengkapnya</a>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -77,12 +77,69 @@
             </div>
         <?php endif; ?>
 
-        <!-- Pagination - Selalu tampilkan -->
-        <div class="news-page-pagination">
-            <?= $pagination ?>
-        </div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="news-page-pagination">
+            <?php echo $pagination; ?>
+        </nav>
     </div>
 </div>
+
+<!-- Tambahkan jQuery jika belum ada -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Tangkap klik pada link pagination
+    $(document).on('click', '.pagination a', function(e) {
+        e.preventDefault();
+        var page = $(this).attr('href');
+        loadPage(page);
+    });
+
+    function loadPage(url) {
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            success: function(response) {
+                // Update konten berita
+                var html = '';
+                $.each(response.berita, function(index, item) {
+                    html += '<div class="news-page-item">';
+                    html += '<div class="news-page-image">';
+                    html += '<img src="<?= base_url("asset/img/") ?>' + item.gambar_berita + '" alt="' + item.judul_berita + '">';
+                    html += '</div>';
+                    html += '<div class="news-page-content">';
+                    html += '<h2>' + item.judul_berita + '</h2>';
+                    html += '<div class="news-page-date">';
+                    html += '<i class="far fa-calendar"></i> ' + formatDate(item.tanggal_berita);
+                    html += '</div>';
+                    html += '<a href="<?= base_url("berita/detail/") ?>' + item.id_berita + '" class="news-page-button">Selengkapnya</a>';
+                    html += '</div>';
+                    html += '</div>';
+                });
+                
+                $('#news-container').find('.news-page-item').remove();
+                $('#news-container').prepend(html);
+                
+                // Update pagination links
+                $('.news-page-pagination').html(response.pagination);
+                
+                // Scroll ke atas halaman dengan animasi
+                $('html, body').animate({
+                    scrollTop: $('.news-page').offset().top
+                }, 500);
+            }
+        });
+    }
+
+    function formatDate(dateString) {
+        var date = new Date(dateString);
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('id-ID', options);
+    }
+});
+</script>
 
 <!-- Footer -->
 <footer class="footer">

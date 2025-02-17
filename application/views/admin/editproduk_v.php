@@ -125,16 +125,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link " href="<?php echo site_url('admin/Dashboard'); ?>">Dashboard</a>
+                    <a class="nav-link " href="<?php echo site_url('Admin/Dashboard'); ?>">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo site_url('admin/Produk'); ?>">Produk</a>
+                    <a class="nav-link active" href="<?php echo site_url('Admin/Produk'); ?>">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Berita'); ?>">Berita</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Berita'); ?>">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Galeri'); ?>">Galeri</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Tentang'); ?>">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('Admin/Galeri'); ?>">Galeri</a>
                 </li>
             </ul>
         </div>
@@ -146,7 +149,7 @@
         <?php if (isset($error)) { echo "<div class='alert alert-danger'>$error</div>"; } ?>
 
         <!-- Form untuk edit produk -->
-        <form action="<?php echo site_url('admin/produk/updatedata/' . $produk->id_barang); ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo site_url('Admin/Produk/updatedata/' . $produk->id_barang); ?>" method="POST" enctype="multipart/form-data">
             <div class="form-group">
             <label for="nama_barang">Nama Barang</label>
             <input type="text" id="nama_barang" name="nama_barang" class="form-control" value="<?php echo $produk->nama_barang; ?>" required> <br>

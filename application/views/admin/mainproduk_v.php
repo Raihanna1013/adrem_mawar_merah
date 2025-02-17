@@ -103,16 +103,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link " href="<?php echo site_url('admin/Dashboard'); ?>">Dashboard</a>
+                    <a class="nav-link " href="<?php echo site_url('Admin/Dashboard'); ?>">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo site_url('admin/Produk'); ?>">Produk</a>
+                    <a class="nav-link active" href="<?php echo site_url('Admin/Produk'); ?>">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Berita'); ?>">Berita</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Berita'); ?>">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Galeri'); ?>">Galeri</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Tentang'); ?>">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('Admin/Galeri'); ?>">Galeri</a>
                 </li>
             </ul>
         </div>
@@ -122,7 +125,7 @@
         <h2>Daftar Produk</h2>
 
         <!-- Tombol Tambah Produk -->
-        <a href="<?php echo site_url('admin/produk/tambah_produk'); ?>" class="btn btn-primary mb-3">Tambah Produk</a>
+        <a href="<?php echo site_url('Admin/Produk/Tambah_produk'); ?>" class="btn btn-primary mb-3">Tambah Produk</a>
 
         <!-- Tabel Produk dengan Bootstrap -->
         <table class="table table-striped table-bordered">
@@ -147,8 +150,8 @@
             <td><?php echo $product['jumlah_barang']; ?></td>
             <td><?php echo $product['deskripsi_barang']; ?></td>
             <td><?php echo $product['link_produk']; ?></td>
-            <td><a href="<?php echo site_url('admin/produk/editproduk/'.$product['id_barang']);?>">Edit</a>|
-            <a href="<?php echo site_url('admin/produk/hapus_produk/'.$product['id_barang']);?>">Hapus</a></td>
+            <td><a href="<?php echo site_url('Admin/Produk/editproduk/'.$product['id_barang']);?>">Edit</a>|
+            <a href="<?php echo site_url('Admin/Produk/hapus_produk/'.$product['id_barang']);?>">Hapus</a></td>
         </tr>
         <?php endforeach; ?>
     <?php else: ?>

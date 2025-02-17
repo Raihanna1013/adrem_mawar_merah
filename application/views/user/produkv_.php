@@ -46,46 +46,198 @@
     <a href="<?= base_url('galeri'); ?>" class="menu-item">Galeri Foto</a>
   </div>
 </nav>
-
-        <div class="search-container">
+<div class="product-page-header">
+        <h1>Produk Adrem Merah</h1>
+    </div>
+    <div class="search-container">
             <button class="kategori-button">
                 <span>Kategori</span>
                 <img src="path/to/menu-icon.svg" alt="menu icon">
             </button>
             
             <div class="search-wrapper">
-                <input type="text" class="search-input" placeholder="Blouse">
+                <input type="text" class="search-input" placeholder="Cari Produk">
                 <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </div>
-        </div>
-    <div class="products-container">
-        <div class="products-grid" width="301px">
-            <div class="product-card">
-            <div class="product-info">
-            <img src="asset/image/adrem.png" alt="Adrem Mawar Merah" width="200px" height="200px" >
-                <h3 class="product-name">Adrem Mawar Merah</h3>
-                <p class="product-price">Rp 82.000</p>
-               <div class="product-actions">
-                    <a href="detail_produk" class="btn-detail" align-items ="center">Lihat Detail</a>
-                  </div> 
-                  <br>
-                  <div class="product-actions">
-                    <a href="#" class="btn-whatsapp">
-                        <img src="whatsapp-icon.svg" alt="WhatsApp" class="whatsapp-icon">
-                        Pesan Sekarang
-                    </a>
-                </div>
-                  
-            </div>
-        </div>
-
     </div>
+
+    <div class="products-container">
+    <div class="products-grid-wrapper">
+        <div class="products-grid" id="product-container">
+            <?php if (!empty($produk)): ?>
+                <?php foreach ($produk as $item): ?>
+                <div class="product-item">
+                    <div class="product-card">
+                        <div class="product-info">
+                            <img src="<?= base_url('asset/img/' . $item['foto_barang']); ?>" alt="<?= $item['nama_barang'] ?>">
+                            <h3 class="product-name"><?= $item['nama_barang'] ?></h3>
+                            <p class="product-price">Rp <?= number_format($item['harga_barang'], 0, ',', '.') ?></p>
+                            <div class="product-actions">
+                                <a href="<?= base_url('detail_produk/' . $item['id_barang']) ?>" class="btn-detail">Lihat Detail</a>
+                            </div>
+                            <div class="product-actions">
+                            <a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk <?= $item['nama_barang'] ?>" class="btn-whatsapp">
+    <img src="<?= base_url('asset/image/waijo.svg') ?>" alt="WhatsApp" class="whatsapp-icon">
+    Pesan Sekarang
+</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+               <!-- Pagination -->
+    <div class="d-flex justify-content-center">
+        <?= $pagination; ?>
+        </div>
+    </div>
+
+    <div class="product-page-pagination"></div> <!-- Pagination Container -->
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const itemsPerRow = 4; // Maksimal 4 produk per baris
+        const maxColumns = 8; // Maksimal 8 kolom per halaman
+        const productItems = document.querySelectorAll(".product-item");
+        const totalRows = Math.ceil(productItems.length / itemsPerRow);
+        const totalPages = Math.ceil(totalRows / 2); // 2 baris per halaman
+        let currentPage = 1;
+
+        console.log("Total Produk:", productItems.length);
+        console.log("Total Baris:", totalRows);
+        console.log("Total Halaman:", totalPages);
+
+        function showPage(page) {
+            productItems.forEach((item, index) => {
+                const rowNumber = Math.floor(index / itemsPerRow) + 1; // Hitung baris produk
+                if (rowNumber > (page - 1) * 2 && rowNumber <= page * 2) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        function createPagination() {
+            const paginationContainer = document.querySelector(".product-page-pagination");
+            paginationContainer.innerHTML = "";
+
+            console.log("Membuat pagination...");
+
+            const paginationList = document.createElement("ul");
+            paginationList.classList.add("pagination");
+
+            for (let i = 1; i <= totalPages; i++) {
+                const listItem = document.createElement("li");
+                listItem.classList.add("page-item");
+                if (i === currentPage) listItem.classList.add("active");
+
+                const link = document.createElement("span");
+                link.classList.add("page-link");
+                link.textContent = i;
+                link.style.cursor = "pointer";
+
+                link.addEventListener("click", function () {
+                    currentPage = i;
+                    showPage(currentPage);
+                    document.querySelectorAll(".page-item").forEach(item => item.classList.remove("active"));
+                    listItem.classList.add("active");
+                });
+
+                listItem.appendChild(link);
+                paginationList.appendChild(listItem);
+            }
+
+            paginationContainer.appendChild(paginationList);
+        }
+
+        showPage(currentPage);
+        createPagination();
+    });
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Logo Column -->
+      <div class="footer-logo">
+        <img src="<?php echo base_url('asset/image/logoadrem.png'); ?>" alt="Logo">
+      </div>
+
+      <!-- Company Column -->
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#" class="request-demo">Request Demo <i class="fas fa-arrow-right"></i></a></li>
+        </ul>
+      </div>
+
+      <!-- Our Service Column -->
+      <div class="footer-column">
+        <h3>Our Service</h3>
+        <ul>
+          <li><a href="#">Official Store</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">Style brand</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources Column -->
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Tutorials</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Column -->
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Integrations</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media Column -->
+      <div class="footer-column">
+        <h3>Social media</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <!-- Footer Bottom -->
+
+</footer>
+    
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrem Merah | Detail Produk</title>
-    <link rel="stylesheet" href="asset/style/style.css">
+    <link rel="stylesheet" href="<?= base_url('asset/style/style.css'); ?>">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -47,35 +47,30 @@
   </div>
 </nav>
 <!-- Main Content -->
-        <div class="product-detail-container">
+        <div class="container product-detail-container">
             <!-- Left Side - Product Images -->
             <div class="product-images">
                 <div class="main-image">
-                    <img src="<?= base_url('asset/image/adrem.ong'); ?>" alt="Adrem Merah">
+                <img src="<?= base_url('asset/img/' . $produk->foto_barang); ?>" alt="<?= $produk->nama_barang; ?>" class="img-fluid" width="400px" height="400px">
                 </div>
-                <div class="thumbnail-list">
-                    <img src="<?= base_url('uploads/products/thumb1.jpg'); ?>" class="thumb-img">
-                    <img src="<?= base_url('uploads/products/thumb2.jpg'); ?>" class="thumb-img">
-                    <img src="<?= base_url('uploads/products/thumb3.jpg'); ?>" class="thumb-img">
-                </div>
-            </div>
+              </div>
 
             <!-- Right Side - Product Info -->
             <div class="product-info">
-                <h1 class="product-title">Adrem Merah</h1>
-                <div class="product-price">Rp 82.000</div>
+                <h1 class="product-title"><?= $produk->nama_barang; ?></h1>
+                <div class="product-price">Rp <?= number_format($produk->harga_barang, 0, ',', '.'); ?></div>
+                
+                <br>
                 
                 <div class="product-details">
-                    <h2>Detail Product</h2>
+                    <h3>Detail Product</h3>
                     <ul>
-                        <li><span>Kondisi:</span> Baru</li>
                         <li><span>Min. Pemesanan:</span> 1 Buah</li>
-                        <li><span>Etalase:</span> <a href="#" class="etalase-link">Baju Santai</a></li>
+        
                     </ul>
-                </div>
-
+                </div> 
                 <div class="product-description">
-                    <p>Lorem ipsum dolor sit amet consectetur. Risus venenatis molestie sed tellus mauris sed fermentum egestas amet. Dapibus tincidunt pellentesque posuere accumsan.</p>
+                <p><?= $produk->deskripsi_barang; ?></p>
                 </div>
             </div>
 
@@ -83,7 +78,7 @@
             <div class="order-section">
                 <h3 class="order-title">Dapat Pesan Di</h3>
                 <div class="order-buttons">
-                    <a href="#" class="btn-order whatsapp">
+                    <a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk <?= $produk->nama_barang ?>" class="btn-order whatsapp">
                         <img src="<?= base_url('images/whatsapp.png'); ?>" alt="WhatsApp">
                         Pesan Lewat WA
                     </a>
@@ -101,31 +96,7 @@
 </di>
 
         <!-- Recommendations -->
-        <div class="recommendations">
-            <div class="section-header">
-                <h2>Recommendation For You</h2>
-                <a href="#" class="view-all">View All</a>
-            </div>
-            <div class="product-grid">
-                <!-- Product Card -->
-                <div class="product-card">
-                    <img src="<?= base_url('uploads/products/jacket.jpg'); ?>" alt="Color Full Jacket">
-                    <div class="product-details">
-                        <h3>Color Full Jacket</h3>
-                        <p class="category">Unisex Jacket</p>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(52)</span>
-                        </div>
-                        <div class="price-tag">
-                            <span class="price">Rp 82.000</span>
-                            <span class="discount">-40%</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Repeat similar product cards for other recommendations -->
-            </div>
-        </div>
+        
 <!-- Footer -->
 <footer class="footer">
   <div class="container">

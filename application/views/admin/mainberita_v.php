@@ -103,16 +103,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link  " href="<?php echo site_url('admin/Dashboard'); ?>">Dashboard</a>
+                    <a class="nav-link  " href="<?php echo site_url('Admin/Dashboard'); ?>">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Produk'); ?>">Produk</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Produk'); ?>">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?php echo site_url('admin/Berita'); ?>">Berita</a>
+                    <a class="nav-link active" href="<?php echo site_url('Admin/Berita'); ?>">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="<?php echo site_url('admin/Galeri'); ?>">Galeri</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Tentang'); ?>">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="<?php echo site_url('Admin/Galeri'); ?>">Galeri</a>
                 </li>
             </ul>
         </div>
@@ -121,7 +124,7 @@
         <h2>List Berita</h2>
 
         <!-- Tombol Tambah Produk -->
-        <a href="<?php echo site_url('admin/berita/berita_baru'); ?>" class="btn btn-primary mb-3">Tambah List Berita</a>
+        <a href="<?php echo site_url('Admin/Berita/berita_baru'); ?>" class="btn btn-primary mb-3">Tambah List Berita</a>
 
         <!-- Tabel Produk dengan Bootstrap -->
         <table class="table table-striped table-bordered">
@@ -142,8 +145,8 @@
             <td><img src="<?php echo base_url('/asset/img/' . $brt['gambar_berita']); ?>" alt="Gambar Berita"></td>
             <td><?php echo $brt['isi_berita']; ?></td>
             <td><?php echo $brt['tanggal_berita']; ?></td>
-            <td><a href="<?php echo site_url('admin/berita/editberita/'.$brt['id_berita']);?>">Edit</a>
-            |<a href="<?php echo site_url('admin/berita/hapus_berita/'.$brt['id_berita']);?>">Hapus</a></td>
+            <td><a href="<?php echo site_url('Admin/Berita/editberita/'.$brt['id_berita']);?>">Edit</a>
+            |<a href="<?php echo site_url('Admin/Berita/hapus_berita/'.$brt['id_berita']);?>">Hapus</a></td>
         </tr>
         <?php endforeach; ?>
     <?php else: ?>

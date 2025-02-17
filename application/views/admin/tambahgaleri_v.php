@@ -128,24 +128,30 @@
                     <a class="nav-link active" href="<?php echo site_url('admin/Dashboard'); ?>">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Produk'); ?>">Produk</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Produk'); ?>">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Berita'); ?>">Berita</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Berita'); ?>">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('admin/Galeri'); ?>">Galeri</a>
+                    <a class="nav-link" href="<?php echo site_url('Admin/Tentang'); ?>">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('Admin/Galeri'); ?>">Galeri</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <form action="<?php echo site_url('admin/galeri/tambah_galeri'); ?>" method="POST" enctype="multipart/form-data">
-    <label for="judul_galeri">Judul Berita</label>
+    <form action="<?php echo site_url('Admin/Galeri/tambah_galeri'); ?>" method="POST" enctype="multipart/form-data">
+    <label for="judul_galeri">Judul Gambar</label>
     <input type="text" id="judu_galeri" name="judul_galeri" required> <br>
 
-    <label for="gambar_galeri">Foto Berita</label>
+    <label for="gambar_galeri">Gambar Galeri</label>
     <input type="file" id="gambar_galeri" name="gambar_galeri" required> <br>
+
+    <label for="tanggal_galeri">Tanggal Foto diambil</label>
+    <input type="datetime-local" id="tanggal_galeri" name="tanggal_galeri" required> <br>
 
     <button type="submit">Tambah Berita</button>
 </form>

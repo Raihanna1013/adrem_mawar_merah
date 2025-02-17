@@ -11,60 +11,52 @@ class Berita extends CI_Controller {
 
     public function index() {
         // Konfigurasi Pagination
-        $config['base_url'] = base_url('berita/index');
+        $config = array();
+        $config['base_url'] = base_url('berita');
         $config['total_rows'] = $this->Admin_model->count_berita();
-        $config['per_page'] = 7;
-        $config['uri_segment'] = 3;
+        $config['per_page'] = 5;
         
-        // Memaksa pagination muncul
-        $config['num_links'] = 2; // Jumlah link di kiri dan kanan
-        $config['use_page_numbers'] = TRUE;
-        $config['display_pages'] = TRUE;
-        $config['first_link'] = TRUE;
-        $config['last_link'] = TRUE;
+        // Menggunakan query string untuk pagination
+        $config['page_query_string'] = TRUE;
+        $config['query_string_segment'] = 'page';
         
-        // Styling Pagination
-        $config['full_tag_open'] = '<div class="news-page-pagination"><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></div>';
-        
-        $config['first_link'] = '&laquo; First';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-        
-        $config['last_link'] = 'Last &raquo;';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-        
-        $config['next_link'] = '&gt;';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-        
-        $config['prev_link'] = '&lt;';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-        
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-        $config['cur_tag_close'] = '</a></li>';
-        
+        // Styling
+        $config['first_link'] = 'First';
+        $config['last_link'] = 'Last';
+        $config['next_link'] = '&raquo;';
+        $config['prev_link'] = '&laquo;';
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
         $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
-        
+        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close'] = '</span></li>';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
         $config['attributes'] = array('class' => 'page-link');
         
-        // Initialize Pagination
         $this->pagination->initialize($config);
         
-        // Get current page
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
-        $offset = ($page - 1) * $config['per_page'];
+        // Get current page from query string
+        $page = $this->input->get('page') ? $this->input->get('page') : 0;
         
-        // Get data dengan limit pagination
-        $data['berita'] = $this->Admin_model->get_berita_pagination($config['per_page'], $offset);
+        // Get data
+        $data['berita'] = $this->Admin_model->get_berita_pagination($config['per_page'], $page);
         $data['pagination'] = $this->pagination->create_links();
         
-        // Tambahkan total data untuk memaksa pagination muncul
-        $data['total_rows'] = $config['total_rows'];
+        if($this->input->is_ajax_request()) {
+            // Jika request AJAX, return JSON
+            echo json_encode($data);
+            return;
+        }
         
+        // Jika bukan AJAX, tampilkan view normal
         $this->load->view('user/berita_v', $data);
     }
 }
