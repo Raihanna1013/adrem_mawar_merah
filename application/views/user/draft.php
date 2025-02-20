@@ -491,3 +491,173 @@ $(document).ready(function() {
 
             background-color: #f5f5dc;
             color: #228B22;
+
+
+            <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita Adrem Merah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Adrem</div>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Produk</a></li>
+                <li><a href="#">Berita</a></li>
+                <li><a href="#">Galeri Foto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Konten Berita -->
+    <section class="news">
+        <h1>Berita Adrem Merah</h1>
+        <p class="date">📅 20 Maret 2024</p>
+        
+        <div class="image-container">
+            <img src="images/fashion-style.jpg" alt="Fashion Style">
+        </div>
+
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur. Eget magna amet ante convallis maecenas curabitur in enim...</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Our Service</h3>
+                <ul>
+                    <li><a href="#">Official Store</a></li>
+                    <li><a href="#">Product</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Social Media</h3>
+                <ul>
+                    <li><a href="#">📸 Instagram</a></li>
+                    <li><a href="#">📘 Facebook</a></li>
+                    <li><a href="#">🎵 TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2024 Adrem. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+<img src="<?= base_url('asset/img/' . $produk->foto_barang); ?>" alt="<?= $produk->nama_barang; ?>" class="img-fluid" width="400px" height="400px">
+
+
+<nav aria-label="Page navigation" class="news-page-pagination">
+        <?php echo $pagination; ?>
+    </nav>
+
+
+    <?php endforeach; ?>
+    <?php else: ?>
+        <div class="no-news">
+            <p>Belum ada produk yang tersedia.</p>
+        </div>
+    <?php endif; ?>
+
+
+
+    <div class="products-container">
+    <div class="products-grid-wrapper">
+        <div class="products-grid" id="product-container">
+            <?php if (!empty($produk)): ?>
+                <?php foreach ($produk as $item): ?>
+                <div class="product-item">
+                    <div class="product-card">
+                        <div class="product-info">
+                            <img src="<?= base_url('asset/img/' . $item['foto_barang']); ?>" alt="<?= $item['nama_barang'] ?>">
+                            <h3 class="product-name"><?= $item['nama_barang'] ?></h3>
+                            <p class="product-price">Rp <?= number_format($item['harga_barang'], 0, ',', '.') ?></p>
+                            <div class="product-actions">
+                                <a href="<?= base_url('detail_produk/' . $item['id_barang']) ?>" class="btn-detail">Lihat Detail</a>
+                            </div>
+                            <div class="product-actions">
+                            <a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk <?= $item['nama_barang'] ?>" class="btn-whatsapp">
+                                    <img src="<?= base_url('asset/image/waijo.svg') ?>" alt="WhatsApp" class="whatsapp-icon">
+                                    Pesan Sekarang
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="no-news">
+                            <p>Belum ada produk yang tersedia.</p>
+                        </div>
+                    <?php endif; ?>
+                             
+                    <nav aria-label="Page navigation" class="news-page-pagination">
+                      <?php echo $pagination; ?>
+                  </nav>
+                  </div>
+        </div>
+</div>
+
+
+<nav aria-label="Page navigation" class="product-page-pagination">
+        <?php echo $pagination; ?>
+    </nav>
+
+    <div class="product-page-container">
+    <div class="product-grid">
+        <?php if (!empty($produk)): ?>
+            <?php foreach ($produk as $item): ?>
+            <div class="product-item">
+                <div class="product-card">
+                    <div class="product-info">
+                        <img src="<?= base_url('asset/img/' . $item['foto_barang']); ?>" alt="<?= $item['nama_barang'] ?>">
+                        <h3 class="product-name"><?= $item['nama_barang'] ?></h3>
+                        <p class="product-price">Rp <?= number_format($item['harga_barang'], 0, ',', '.') ?></p>
+                        <div class="product-actions">
+                            <a href="<?= base_url('detail_produk/' . $item['id_barang']) ?>" class="btn-detail">Lihat Detail</a>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk <?= urlencode($item['nama_barang']) ?>" class="btn-whatsapp">
+                                <img src="<?= base_url('asset/image/waijo.svg') ?>" alt="WhatsApp" class="whatsapp-icon">
+                                Pesan Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="no-product">
+                <p>Belum ada produk yang tersedia.</p>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="product-page-pagination">
+        <?php echo $pagination; ?>
+    </nav>
+</div>
+
+<div class="d-flex justify-content-center">
+        <?= $pagination; ?>
+        </div>

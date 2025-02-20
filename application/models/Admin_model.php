@@ -16,6 +16,7 @@
             $query = $this->db->get('tbl_barang');
             return $query->result_array(); // HARUS `result_array()`, BUKAN `result()`
         }
+
         public function insert_produk($namabarang, $hargabarang, $jumlahbarang, $fotobarang, $deskripsibarang, $linkproduk) {
             $data = array(
                 'nama_barang' => $namabarang,
@@ -115,6 +116,18 @@
             $this->db->where('id_berita', $id_berita);
             return $this->db->delete('tbl_berita');
         }
+
+        public function count_berita() {
+            return $this->db->count_all('tbl_berita'); // Pastikan nama tabel sudah benar
+        }
+    
+        // Mengambil data berita dengan limit dan offset untuk pagination
+        public function get_berita_pagination($limit, $start) {
+            $this->db->limit($limit, $start);
+            $this->db->order_by('tanggal_berita', 'DESC');
+            $query = $this->db->get('tbl_berita');
+            return $query->result_array();
+        }
         
         //galeri
 
@@ -151,73 +164,63 @@
                 return $this->db->insert_id();
         }
         
-        public function get_idgaleri($id_galeri){
-            $this->db->where('id_galeri', $id_galeri);
-            return $this->db->get('tbl_galeri')->row();
+        public function get_idgaleri($id_galeri) {
+            return $this->db->get_where('tbl_galeri', ['id_galeri' => $id_galeri])->row();
         }
+    
         public function update_galeri($id_galeri, $data) {
             $this->db->where('id_galeri', $id_galeri);
             return $this->db->update('tbl_galeri', $data);
         }
 
-
-        public function delete_galeri($id_galeri){
+        public function delete_galeri($id_galeri) {
+            if (!$id_galeri) {
+                log_message('error', 'ID Galeri tidak valid dalam delete_galeri().');
+                return false;
+            }
+        
+            log_message('debug', 'Menghapus galeri dengan ID: ' . $id_galeri);
+        
             $this->db->where('id_galeri', $id_galeri);
-            $this->db->delete('tbl_galeri');  // Ganti 'produk' dengan nama tabel produk yang sesuai
+            return $this->db->delete('tbl_galeri');
         }
         
-        public function count_berita() {
-            return $this->db->count_all('tbl_berita'); // Pastikan nama tabel sudah benar
+
+        public function count_galeri() {
+            return $this->db->count_all('tbl_galeri'); // Pastikan nama tabel sudah benar
+        }
+        
+        // Mengambil data galeri dengan limit dan offset untuk pagination
+        public function get_galeri_pagination($limit, $start) {
+            $this->db->limit($limit, $start);
+            $this->db->order_by('id_galeri', 'DESC');
+            $query = $this->db->get('tbl_galeri');
+            return $query->result_array();
+        }
+        
+    
+        public function get_latest_gallery($limit = 8) {
+            $this->db->order_by('tanggal_galeri', 'DESC'); // Urutkan dari yang terbaru
+            $this->db->limit($limit); // Ambil hanya 6 data
+            $query = $this->db->get('tbl_galeri'); // Ganti dengan nama tabel yang sesuai
+            return $query->result_array();
+        }
+        
+        
+        public function count_produk() {
+            return $this->db->count_all('tbl_barang'); // Pastikan nama tabel sudah benar
         }
     
         // Mengambil data berita dengan limit dan offset untuk pagination
-        public function get_berita_pagination($limit, $start) {
-            $this->db->limit($limit, $start);
-            $this->db->order_by('tanggal_berita', 'DESC');
-            $query = $this->db->get('tbl_berita');
-            return $query->result_array();
-        }
-
-        public function count_produk() {
-            return $this->db->count_all('tbl_barang');
-        }
-        
         public function get_produk_pagination($limit, $start) {
-            $this->db->select('*');
-            $this->db->from('tbl_barang');
             $this->db->limit($limit, $start);
             $this->db->order_by('id_barang', 'DESC');
-            $query = $this->db->get();
-        
-            // Untuk debugging jika terjadi error
-            if ($query->num_rows() == 0) {
-                log_message('error', 'No products found for pagination: ' . $this->db->last_query());
-            }
-        
-            return $query->result_array();
-        }
-
-
-        public function count_galeri() {
-            return $this->db->count_all('tbl_galeri');
-        }
-    
-        public function get_galeri_pagination($limit, $start) {
-            $this->db->select('*');
-            $this->db->from('tbl_galeri');
-            $this->db->limit($limit, $start);
-            $this->db->order_by('id_galeri', 'DESC');
-            $query = $this->db->get();
-    
-            // Debugging jika data tidak diambil dengan benar
-            if ($query->num_rows() == 0) {
-                log_message('error', 'No gallery data found: ' . $this->db->last_query());
-            }
-    
+            $query = $this->db->get('tbl_barang');
             return $query->result_array();
         }
         
-
+    
+    
        //Profil
             public function get_profil(){
                 $query = $this->db->get('tbl_profil');

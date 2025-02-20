@@ -145,7 +145,12 @@
             <td><img src="<?php echo base_url('/asset/img/' . $glr['gambar_galeri']); ?>" alt="Gambar Galeri"></td>
             <td><?php echo $glr['tanggal_galeri']; ?></td>
             <td><a href="<?php echo site_url('Admin/Galeri/edit_galeri/'.$glr['id_galeri']);?>">Edit</a>|
-            <a href="<?php echo site_url('Admin/Galeri/hapus_galeri/'.$glr['id_galeri']);?>">Hapus</a></td>
+            <a href="<?php echo site_url('Admin/Galeri/hapus_galeri/'.$glr['id_galeri']);?>" 
+                onclick="return confirm('Apakah Anda yakin ingin menghapus galeri ID: <?php echo $glr['id_galeri']; ?>?');">
+                Hapus
+                </a>
+
+
         </tr>
         <?php endforeach; ?>
     <?php else: ?>

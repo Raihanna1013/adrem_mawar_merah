@@ -35,7 +35,7 @@ class Welcome extends CI_Controller {
 	
 		// Ambil data dari model
 		$data['berita'] = $this->Admin_model->get_berita_terbaru();
-		$data['galeri'] = $this->Admin_model->get_galeri();
+		$data['galeri'] = $this->Admin_model->get_latest_gallery(8); 
 	
 		// Tampilkan di view
 		$this->load->view('user/home_v', $data);

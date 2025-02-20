@@ -149,20 +149,19 @@
 
         <!-- Form untuk edit produk -->
         <form action="<?php echo site_url('Admin/Galeri/update_galeri/' . $galeri->id_galeri); ?>" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="judul_galeri">Judul Galeri</label>
-                <input type="text" id="judul_galeri" name="judul_galeri" value="<?php echo $galeri->judul_galeri; ?>" class="form-control" required> <br>
+                <div class="form-group">
+                    <label for="judul_galeri">Judul Galeri</label>
+                    <input type="text" id="judul_galeri" name="judul_galeri" value="<?php echo $galeri->judul_galeri; ?>" class="form-control" required> <br>
+                </div>
 
-            </div>
+                <div class="form-group">
+                    <label for="gambar_galeri">Foto Berita</label>
+                    <input type="file" id="gambar_galeri" name="gambar_galeri"> <br>
+                    <small>Foto Saat Ini: <img src="<?php echo base_url('asset/img/' . $galeri->gambar_galeri); ?>" width="100"></small>
+                </div>
 
-            <div class="form-group">
-            <label for="gambar_galeri">Foto Berita</label>
-                <input type="file" id="gambar_galeri" name="gambar_galeri"> <br>
-                <small>Foto Saat Ini: <img src="<?php echo base_url('asset/img/' . $galeri->gambar_galeri); ?>" width="100"></s>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Update Galeri</button>
-        </form>
+                <button type="submit" class="btn btn-primary">Update Galeri</button>
+            </form>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

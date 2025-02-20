@@ -58,6 +58,7 @@ $route['berita'] = 'berita/index';
 $route['detail_produk/(:num)'] = 'detail_produk/index/$1';
 $route['berita/(:num)'] = 'berita/index/$1';
 $route['detail_berita/(:num)'] = 'detail_berita/index/$1';
+$route['produk/index/(:num)'] = 'produk/index/$1';
 
 //session
 $config['sess_driver'] = 'files';

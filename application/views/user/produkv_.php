@@ -63,7 +63,6 @@
                 </svg>
             </div>
     </div>
-
     <div class="products-container">
     <div class="products-grid-wrapper">
         <div class="products-grid" id="product-container">
@@ -80,89 +79,91 @@
                             </div>
                             <div class="product-actions">
                             <a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk <?= $item['nama_barang'] ?>" class="btn-whatsapp">
-    <img src="<?= base_url('asset/image/waijo.svg') ?>" alt="WhatsApp" class="whatsapp-icon">
-    Pesan Sekarang
-</a>
+                                    <img src="<?= base_url('asset/image/waijo.svg') ?>" alt="WhatsApp" class="whatsapp-icon">
+                                    Pesan Sekarang
+                                </a>
 
                             </div>
 
                         </div>
                     </div>
-                </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-               <!-- Pagination -->
-    <div class="d-flex justify-content-center">
-        <?= $pagination; ?>
-        </div>
-    </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                  <!-- Pagination -->
 
-    <div class="product-page-pagination"></div> <!-- Pagination Container -->
+          </div>
+
+          <nav aria-label="Page navigation" class="news-page-pagination">
+            <?php echo $pagination; ?>
+        </nav>
+      </div>
 </div>
-
+<!-- Tambahkan jQuery jika belum ada -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const itemsPerRow = 4; // Maksimal 4 produk per baris
-        const maxColumns = 8; // Maksimal 8 kolom per halaman
-        const productItems = document.querySelectorAll(".product-item");
-        const totalRows = Math.ceil(productItems.length / itemsPerRow);
-        const totalPages = Math.ceil(totalRows / 2); // 2 baris per halaman
-        let currentPage = 1;
+$(document).ready(function() {
+    $(document).on('click', '.pagination a', function(e) {
+        e.preventDefault();
+        var pageUrl = $(this).attr('href');
+        loadPage(pageUrl);
+    });
 
-        console.log("Total Produk:", productItems.length);
-        console.log("Total Baris:", totalRows);
-        console.log("Total Halaman:", totalPages);
+    function loadPage(url) {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            console.log(response); // Debugging response JSON
 
-        function showPage(page) {
-            productItems.forEach((item, index) => {
-                const rowNumber = Math.floor(index / itemsPerRow) + 1; // Hitung baris produk
-                if (rowNumber > (page - 1) * 2 && rowNumber <= page * 2) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-
-        function createPagination() {
-            const paginationContainer = document.querySelector(".product-page-pagination");
-            paginationContainer.innerHTML = "";
-
-            console.log("Membuat pagination...");
-
-            const paginationList = document.createElement("ul");
-            paginationList.classList.add("pagination");
-
-            for (let i = 1; i <= totalPages; i++) {
-                const listItem = document.createElement("li");
-                listItem.classList.add("page-item");
-                if (i === currentPage) listItem.classList.add("active");
-
-                const link = document.createElement("span");
-                link.classList.add("page-link");
-                link.textContent = i;
-                link.style.cursor = "pointer";
-
-                link.addEventListener("click", function () {
-                    currentPage = i;
-                    showPage(currentPage);
-                    document.querySelectorAll(".page-item").forEach(item => item.classList.remove("active"));
-                    listItem.classList.add("active");
+            if (response.produk.length > 0) {
+                var html = '';
+                $.each(response.produk, function(index, item) {
+                    html += '<div class="product-item">';
+                    html += '<div class="product-card">';
+                    html += '<div class="product-info">';
+                    html += '<img src="<?= base_url("asset/img/") ?>' + item.foto_barang + '" alt="' + item.nama_barang + '">';
+                    html += '<h3 class="product-name">' + item.nama_barang + '</h3>';
+                    html += '<p class="product-price">' + formatPrice(item.harga_barang) + '</p>';
+                    html += '<div class="product-actions">';
+                    html += '<a href="<?= base_url("detail_produk/") ?>' + item.id_barang + '" class="btn-detail">Lihat Detail</a>';
+                    html += '</div>';
+                    
+                    // ✅ Tambahkan Button WhatsApp di sini
+                    html += '<div class="product-actions">';
+                    html += '<a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk ' + encodeURIComponent(item.nama_barang) + '" class="btn-whatsapp">';
+                    html += '<img src="<?= base_url("asset/image/waijo.svg") ?>" alt="WhatsApp" class="whatsapp-icon">';
+                    html += ' Pesan Sekarang';
+                    html += '</a>';
+                    html += '</div>';
+                    
+                    html += '</div>'; // product-info
+                    html += '</div>'; // product-card
+                    html += '</div>'; // product-item
                 });
 
-                listItem.appendChild(link);
-                paginationList.appendChild(listItem);
+                $('#product-container').html(html);
+                $('.news-page-pagination').html(response.pagination); // Perbaikan class pagination
+            } else {
+                $('#product-container').html('<p>Belum ada produk yang tersedia.</p>');
             }
-
-            paginationContainer.appendChild(paginationList);
+        },
+        error: function(xhr, status, error) {
+            console.log("AJAX Error: " + status + " - " + error);
         }
-
-        showPage(currentPage);
-        createPagination();
     });
+}
+
+
+    function formatPrice(number) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
+    }
+});
 </script>
+
+
+
 <br>
 <br>
 <br>

@@ -630,6 +630,101 @@ color: white;
   }
 }
 
+.news-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Container berita */
+.news-container {
+  max-width: 800px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Judul berita */
+.news-title {
+  font-size: 28px;
+  color: #C00000;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Meta info berita */
+.news-meta {
+  display: flex;
+  justify-content: center; /* Pusatkan elemen */
+  align-items: center;
+  font-size: 14px;
+  color: gray;
+  gap: 8px; /* Beri jarak antara icon & teks */
+  margin-bottom: 20px;
+}
+
+/* Icon tanggal */
+.news-meta img {
+  width: 18px; /* Ukuran icon */
+  height: 18px;
+}
+
+/* Gambar berita */
+.news-image {
+  display: flex;
+  justify-content: center; /* Pusatkan gambar */
+  margin-bottom: 20px;
+}
+
+.news-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* Konten berita */
+.news-content {
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Responsif: Tablet */
+@media (max-width: 768px) {
+  .news-container {
+      width: 90%;
+      padding: 15px;
+  }
+
+  .news-title {
+      font-size: 24px;
+  }
+
+  .news-content {
+      font-size: 15px;
+  }
+}
+
+/* Responsif: Mobile */
+@media (max-width: 480px) {
+  .news-title {
+      font-size: 22px;
+  }
+
+  .news-content {
+      font-size: 14px;
+  }
+
+  .news-image img {
+      max-width: 100%;
+  }
+}
+
+
 /* Gallery Section */
 .gallery-section {
   padding: 60px 0;
@@ -669,7 +764,7 @@ color: white;
 
 .gallery-item:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(107, 8, 8, 0.1)
 }
 
 .gallery-card {
@@ -695,13 +790,13 @@ color: white;
   left: 0;
   right: 0;
   padding: 20px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  background: linear-gradient(transparent,#363636);
   color: white;
   transition: opacity 0.3s ease;
 }
 
 .gallery-item:hover .gallery-overlay {
-  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  background: linear-gradient(transparent,#363636);
 }
 
 .gallery-overlay h4 {
@@ -717,8 +812,28 @@ color: white;
   font-size: 12px;
   opacity: 0.8;
   transform: translateY(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #dfdfdf !important; /* Ganti warna sesuai keinginan (contoh: emas) */
 }
+/* Mengubah warna tanggal secara default */
+.tanggal-galeri small {
+  color: #ffcece !important; /* Warna emas */
+  font-weight: 300;
+  font-size: 14px;
+}
+
+/* Mengubah warna tanggal saat hover */
+.gallery-item:hover .tanggal-galeri small {
+  color: #FF4500 !important; /* Warna oranye */
+  transition: color 0.3s ease;
+}
+
+/* Jika masih terpengaruh oleh Bootstrap, override class text-muted */
+.text-muted {
+  color: #FFD700 !important; /* Warna emas */
+}
+
+
 
 /* Badge styles */
 .badge {
@@ -727,7 +842,7 @@ color: white;
   left: 10px;
   padding: 4px 8px;
   background: white;
-  color: #333;
+  color: #745d15;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
@@ -1148,7 +1263,7 @@ color: white;
 }
 
 /* Product Grid Styles */
-.products-container {
+products-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
@@ -1241,6 +1356,18 @@ color: white;
   width: 24px !important; /* Samakan ukuran ikon */
   height: 24px !important;
   margin-right: 8px; /* Jarak dengan teks */
+}
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+      grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 
@@ -1697,6 +1824,8 @@ color: white;
   margin-top: 25px;
   color: #666;
   line-height: 1.6;
+  max-width: 500px; /* Sesuaikan lebar maksimal sesuai kebutuhan */
+  text-align: justify;
 }
 
 .product-title {
@@ -1711,7 +1840,6 @@ color: white;
   background: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  
   height: 65%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -1741,10 +1869,51 @@ color: white;
   width: 100%;
   max-width: 300px;
 }
-.whatsapp { background: #25D366; }
+.whatsapp { background: #4EA526; }
 .instagram { background: #E4405F; }
 .shopee { background: #FF5722; }
 .btn-order img {
   width: 25px;
   margin-right: 10px;
+}
+
+.product-page-mainimage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-page-image {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-page-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.product-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
 }

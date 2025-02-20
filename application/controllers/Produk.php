@@ -9,19 +9,16 @@
             $this->load->library('pagination');
         }
         
-
         public function index() {
-            $config = array();
-            $config['base_url'] = base_url('produk/index');
+            // Konfigurasi Pagination
+            $config['base_url'] = base_url('produk');
             $config['total_rows'] = $this->Admin_model->count_produk();
-            $config['per_page'] = 8; // Menampilkan 8 produk per halaman
-            $config['uri_segment'] = 3;
+            $config['per_page'] = 8;
+            $config['use_page_numbers'] = TRUE; // Menggunakan nomor halaman, bukan offset
+            $config['page_query_string'] = TRUE;
+            $config['query_string_segment'] = 'page';
         
-            // Styling Pagination
-            $config['first_link'] = 'First';
-            $config['last_link'] = 'Last';
-            $config['next_link'] = '&raquo;';
-            $config['prev_link'] = '&laquo;';
+            // Styling Pagination agar tetap muncul
             $config['full_tag_open'] = '<ul class="pagination">';
             $config['full_tag_close'] = '</ul>';
             $config['num_tag_open'] = '<li class="page-item">';
@@ -32,24 +29,18 @@
             $config['next_tag_close'] = '</li>';
             $config['prev_tag_open'] = '<li class="page-item">';
             $config['prev_tag_close'] = '</li>';
-            $config['first_tag_open'] = '<li class="page-item">';
-            $config['first_tag_close'] = '</li>';
-            $config['last_tag_open'] = '<li class="page-item">';
-            $config['last_tag_close'] = '</li>';
             $config['attributes'] = array('class' => 'page-link');
         
             $this->pagination->initialize($config);
-            
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         
-            // Ambil data produk dengan pagination
+            // Hitung halaman dengan benar (gunakan nomor halaman, bukan offset)
+            $page = ($this->input->get('page')) ? ($this->input->get('page') - 1) * $config['per_page'] : 0;
+        
+            // Ambil data produk
             $data['produk'] = $this->Admin_model->get_produk_pagination($config['per_page'], $page);
-        
-            // Pastikan pagination tetap muncul meskipun hanya ada satu produk
-            $data['pagination'] = ($config['total_rows'] > 0) ? $this->pagination->create_links() : '<ul class="pagination"><li class="page-item active"><span class="page-link">1</span></li></ul>';
+            $data['pagination'] = $this->pagination->create_links();
         
             if ($this->input->is_ajax_request()) {
-                header('Content-Type: application/json');
                 echo json_encode($data);
                 return;
             }
@@ -57,8 +48,9 @@
             $this->load->view('user/produkv_', $data);
         }
         
-
-       
-    }
+           
+        
+}
+        
 
 ?>

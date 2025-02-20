@@ -141,8 +141,8 @@
                 </tr>
             </thead>
         <tbody>
-        <?php if (!empty($products)) : ?>
-         <?php foreach ($products as $product): ?>
+        <?php if (!empty($produk)) : ?>
+         <?php foreach ($produk as $product): ?>
         <tr>
             <td><?php echo $product['nama_barang']; ?></td>
             <td><img src="<?php echo base_url('/asset/img/' . $product['foto_barang']); ?>" alt="Gambar Produk"></td>

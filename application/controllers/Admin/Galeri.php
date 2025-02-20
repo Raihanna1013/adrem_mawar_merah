@@ -57,93 +57,115 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
     
                 // Redirect ke halaman daftar berita
-                redirect('admin/galeri');
+                redirect('Admin/Galeri');
             }
         }  
     }
 
-    public function edit_galeri($id_galeri){
+    public function edit_galeri($id_galeri) { 
         $data['galeri'] = $this->Admin_model->get_idgaleri($id_galeri);
     
-        // Validasi jika produk tidak ditemukan
         if (!$data['galeri']) {
             show_error("Galeri dengan ID $id_galeri tidak ditemukan.", 404);
             return;
         }
     
-        // Kirim data ke view
         $this->load->view('admin/editgaleri_v', $data);
     }
 
-    public function update_galeri($id_galeri = NULL) {
+    public function update_galeri($id_galeri = NULL) { 
         if ($id_galeri === NULL) {
-            show_404(); // Jika tidak ada ID galeri, tampilkan error 404
+            show_404();
         }
     
-        // Validasi form
         $this->form_validation->set_rules('judul_galeri', 'Judul Galeri', 'required');
     
         if ($this->form_validation->run() === FALSE) {
-            // Ambil data galeri lama
             $data['galeri'] = $this->Admin_model->get_idgaleri($id_galeri);
-    
-            // Jika data tidak ditemukan, tampilkan error
             if (!$data['galeri']) {
                 show_404();
             }
-    
-            // Jika validasi gagal, kembali ke form edit dengan data lama
             $this->load->view('admin/editgaleri_v', $data);
         } else {
-            // Ambil data yang diinputkan
             $judulgaleri = $this->input->post('judul_galeri', TRUE);
+            $galeri = $this->Admin_model->get_idgaleri($id_galeri);
     
-            // Ambil data galeri lama
-            $galeri = $this->Admin_model->get_galeri($id_galeri);
-    
-            // Jika tidak ditemukan, tampilkan error
             if (!$galeri) {
                 show_404();
             }
     
             $gambargaleri = $galeri->gambar_galeri; // Default pakai gambar lama
     
-            // Konfigurasi upload gambar
-            $config['upload_path']   = 'asset/img/';
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
-            $config['max_size']      = 10048; // Maksimal 10MB
+            if (!empty($_FILES['gambar_galeri']['name'])) { 
+                $config['upload_path']   = 'asset/img/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size']      = 10048; 
     
-            $this->upload->initialize($config);
+                $this->load->library('upload', $config);
     
-            // Coba upload gambar baru
-            if ($this->upload->do_upload('gambar_galeri')) {
-                $gambargaleri = $this->upload->data('file_name'); // Jika berhasil, pakai gambar baru
+                if ($this->upload->do_upload('gambar_galeri')) {
+                    $gambargaleri = $this->upload->data('file_name');
+                }
             }
     
-            // Data yang akan diupdate
-            $data = array(
-                'judul_galeri'  => $judulgaleri,
-                'gambar_galeri' => $gambargaleri
-            );
-    
-            // Update ke database
-            $update = $this->Admin_model->update_galeri($id_galeri, $data);
-    
-            if ($update) {
-                $this->session->set_flashdata('success', 'Galeri berhasil diperbarui!');
-            } else {
-                $this->session->set_flashdata('error', 'Gagal memperbarui galeri. Silakan coba lagi.');
+            $data = array();
+            if ($judulgaleri !== $galeri->judul_galeri) {
+                $data['judul_galeri'] = $judulgaleri;
+            }
+            if ($gambargaleri !== $galeri->gambar_galeri) {
+                $data['gambar_galeri'] = $gambargaleri;
             }
     
-            // Redirect ke halaman daftar galeri
-            redirect('admin/galeri');
+            if (!empty($data)) {
+                $update = $this->Admin_model->update_galeri($id_galeri, $data);
+                if ($update) {
+                    $this->session->set_flashdata('success', 'Galeri berhasil diperbarui!');
+                } else {
+                    $this->session->set_flashdata('error', 'Gagal memperbarui galeri. Silakan coba lagi.');
+                }
+            }
+    
+            redirect('Admin/Galeri');
         }
     }
 
-    public function hapus_galeri($id_galeri){
-        $this->Admin_model->delete_galeri($id_galeri);
-        redirect('admin/galeri');
+    public function hapus_galeri($id_galeri) {
+        // Pastikan ID valid
+        if (!$id_galeri || !is_numeric($id_galeri)) {
+            show_error("ID Galeri tidak valid!", 400);
+            return;
+        }
+    
+        // Ambil data galeri
+        $galeri = $this->Admin_model->get_idgaleri($id_galeri);
+        if (!$galeri) {
+            show_error("Galeri dengan ID $id_galeri tidak ditemukan.", 404);
+            return;
+        }
+    
+        // Debugging: Tampilkan ID yang akan dihapus
+        log_message('debug', 'Proses hapus galeri dengan ID: ' . $id_galeri);
+    
+        // Hapus file gambar jika ada
+        $gambar_path = FCPATH . 'asset/img/' . $galeri->gambar_galeri;
+        if (!empty($galeri->gambar_galeri) && file_exists($gambar_path)) {
+            unlink($gambar_path);
+        }
+    
+        // Hapus data dari database
+        $delete = $this->Admin_model->delete_galeri($id_galeri);
+        if ($delete) {
+            $this->session->set_flashdata('success', 'Galeri berhasil dihapus!');
+        } else {
+            $this->session->set_flashdata('error', 'Gagal menghapus galeri.');
+        }
+    
+        redirect('Admin/Galeri');
     }
+    
+    
+    
+    
     
     
 

@@ -220,7 +220,9 @@
                             <img src="<?= base_url('asset/img/' . $item['gambar_galeri']); ?>" alt="<?= $item['judul_galeri'] ?>">
                             <div class="gallery-overlay">
                                 <h5 class="card-title"><?= $item['judul_galeri'] ?></h5>
-                                <p class="card-text"><small class="text-muted"><?= date('d F Y', strtotime($item['tanggal_galeri'])) ?></small></p>
+                                <p class="card-text tanggal-galeri">
+                                    <small><?= date('d F Y', strtotime($item['tanggal_galeri'])) ?></small>
+                                </p>
                             </div>
                         </div>
                     </div>

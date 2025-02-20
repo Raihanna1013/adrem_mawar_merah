@@ -12,7 +12,7 @@ class Produk extends CI_Controller
             $this->load->library('upload'); 
         }
         public function index() {
-            $data['products'] = $this->Admin_model->get_produk();
+            $data['produk'] = $this->Admin_model->get_produk();
             $this->load->view('admin/mainproduk_v', $data);
         }
         

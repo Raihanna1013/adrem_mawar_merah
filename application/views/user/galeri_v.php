@@ -61,7 +61,9 @@
                             <img src="<?= base_url('asset/img/' . $item['gambar_galeri']); ?>" alt="<?= $item['judul_galeri'] ?>">
                             <div class="gallery-overlay">
                                 <h5 class="card-title"><?= $item['judul_galeri'] ?></h5>
-                                <p class="card-text"><small class="text-muted"><?= date('d F Y', strtotime($item['tanggal_galeri'])) ?></small></p>
+                                <p class="card-text tanggal-galeri">
+                                    <small><?= date('d F Y', strtotime($item['tanggal_galeri'])) ?></small>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -73,140 +75,49 @@
     </div>
 
     <!-- Pagination -->
-    <div class="gallery-page-pagination text-center"></div>
+    <nav aria-label="Page navigation" class="news-page-pagination">
+            <?php echo $pagination; ?>
+        </nav>
 </div>
 
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Ambil semua elemen dengan class .gallery-item
-    const galleryItems = document.querySelectorAll(".gallery-item");
+$(document).ready(function() {
+    $(document).on('click', '.gallery-page-pagination a', function(e) {
+        e.preventDefault();
+        var pageUrl = $(this).attr('href');
+        loadGallery(pageUrl);
+    });
 
-    // Minimal 4 baris & 1 kolom, maksimal 3 kolom
-    const minRows = 4;
-    const minCols = 1;
-    const maxCols = 3;
-    
-    const itemsPerRow = maxCols; // Maksimal 3 kolom per baris
-    const rowsPerPage = minRows; // Minimal 4 baris per halaman
-    const itemsPerPage = itemsPerRow * rowsPerPage; // Total item per halaman
+    function loadGallery(url) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response); // Debugging response JSON
 
-    if (galleryItems.length === 0) {
-        console.warn("Tidak ada elemen .gallery-item ditemukan.");
-        return;
-    }
+                if (response.galeri.length > 0) {
+                    var html = '';
+                    $.each(response.galeri, function(index, item) {
+                        html += '<div class="gallery-item">';
+                        html += '<img src="<?= base_url("asset/img/") ?>' + item.foto + '" alt="' + item.judul + '">';
+                        html += '<h3 class="gallery-title">' + item.judul + '</h3>';
+                        html += '</div>';
+                    });
 
-    console.log("Jumlah elemen .gallery-item ditemukan:", galleryItems.length);
-
-    // Hitung total halaman
-    const totalPages = Math.ceil(galleryItems.length / itemsPerPage);
-    let currentPage = 1;
-
-    console.log("Total Gambar:", galleryItems.length);
-    console.log("Total Halaman:", totalPages);
-
-    // Fungsi untuk menampilkan halaman sesuai nomor
-    function showPage(page) {
-        galleryItems.forEach((item, index) => {
-            if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
+                    $('#galeri-container').html(html);
+                    $('.gallery-page-pagination').html(response.pagination);
+                } else {
+                    $('#galeri-container').html('<p>Belum ada galeri yang tersedia.</p>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("AJAX Error: " + status + " - " + error);
             }
         });
     }
-
-    // Fungsi untuk membuat pagination
-    function createPagination() {
-        const paginationContainer = document.querySelector(".gallery-page-pagination");
-        if (!paginationContainer) {
-            console.error("Elemen .gallery-page-pagination tidak ditemukan.");
-            return;
-        }
-
-        paginationContainer.innerHTML = "";
-        const paginationList = document.createElement("ul");
-        paginationList.classList.add("pagination");
-
-        // Tombol "Prev"
-        if (totalPages > 1) {
-            const prevItem = document.createElement("li");
-            prevItem.classList.add("page-item");
-            if (currentPage === 1) prevItem.classList.add("disabled");
-
-            const prevLink = document.createElement("span");
-            prevLink.classList.add("page-link");
-            prevLink.textContent = "«";
-            prevLink.style.cursor = "pointer";
-
-            prevLink.addEventListener("click", function () {
-                if (currentPage > 1) {
-                    currentPage--;
-                    showPage(currentPage);
-                    updatePagination();
-                }
-            });
-
-            prevItem.appendChild(prevLink);
-            paginationList.appendChild(prevItem);
-        }
-
-        // Nomor Halaman
-        for (let i = 1; i <= totalPages; i++) {
-            const listItem = document.createElement("li");
-            listItem.classList.add("page-item");
-            if (i === currentPage) listItem.classList.add("active");
-
-            const link = document.createElement("span");
-            link.classList.add("page-link");
-            link.textContent = i;
-            link.style.cursor = "pointer";
-
-            link.addEventListener("click", function () {
-                currentPage = i;
-                showPage(currentPage);
-                updatePagination();
-            });
-
-            listItem.appendChild(link);
-            paginationList.appendChild(listItem);
-        }
-
-        // Tombol "Next"
-        if (totalPages > 1) {
-            const nextItem = document.createElement("li");
-            nextItem.classList.add("page-item");
-            if (currentPage === totalPages) nextItem.classList.add("disabled");
-
-            const nextLink = document.createElement("span");
-            nextLink.classList.add("page-link");
-            nextLink.textContent = "»";
-            nextLink.style.cursor = "pointer";
-
-            nextLink.addEventListener("click", function () {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    showPage(currentPage);
-                    updatePagination();
-                }
-            });
-
-            nextItem.appendChild(nextLink);
-            paginationList.appendChild(nextItem);
-        }
-
-        paginationContainer.appendChild(paginationList);
-    }
-
-    function updatePagination() {
-        document.querySelectorAll(".page-item").forEach(item => item.classList.remove("active"));
-        const paginationItems = document.querySelectorAll(".page-item");
-        paginationItems[currentPage].classList.add("active");
-    }
-
-    showPage(currentPage);
-    createPagination();
 });
 </script>
 <!-- Modal Gallery -->

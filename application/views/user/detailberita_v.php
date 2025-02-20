@@ -46,9 +46,21 @@
     <a href="<?= base_url('galeri'); ?>" class="menu-item">Galeri Foto</a>
   </div>
 </nav>
-
-
-
+<div class="news-detail-container">
+        <div class="news-container">
+            <h1 class="news-title">Berita Adrem Merah</h1>
+            <div class="news-meta">
+                <img src="calendar-icon.png" alt="Kalender">
+                <span>20 Maret 2024</span>
+            </div>
+            <div class="news-image">
+                <img src="gambar-berita.jpg" alt="Gambar Berita">
+            </div>
+            <p class="news-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et metus sit amet nisl euismod...
+            </p>
+        </div>
+    </div>
 <!-- Footer -->
 <footer class="footer">
   <div class="container">

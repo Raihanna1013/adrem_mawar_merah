@@ -49,11 +49,18 @@
 <!-- Main Content -->
         <div class="container product-detail-container">
             <!-- Left Side - Product Images -->
-            <div class="product-images">
-                <div class="main-image">
+            <div class="product-page-mainimage">
+                <div class="product-page-image">
                 <img src="<?= base_url('asset/img/' . $produk->foto_barang); ?>" alt="<?= $produk->nama_barang; ?>" class="img-fluid" width="400px" height="400px">
                 </div>
-              </div>
+                
+                <div class="product-thumbnails">
+                  <img src="<?= base_url('asset/img/' . $produk->foto_barang); ?>" alt="Thumbnail 1" class="thumbnail" onclick="changeImage(this)">
+                  <img src="<?= base_url('asset/img/' . $produk->foto_barang); ?>" alt="Thumbnail 2" class="thumbnail" onclick="changeImage(this)">
+                  <img src="<?= base_url('asset/img/' . $produk->foto_barang); ?>" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+
 
             <!-- Right Side - Product Info -->
             <div class="product-info">
@@ -76,24 +83,21 @@
 
             <!-- Order Section -->
             <div class="order-section">
-                <h3 class="order-title">Dapat Pesan Di</h3>
-                <div class="order-buttons">
+                  <div class="order-title">Dapat Pesan Di</div>
+                  <div class="order-buttons">
                     <a href="https://wa.me/6282227175035?text=Saya tertarik dengan produk <?= $produk->nama_barang ?>" class="btn-order whatsapp">
-                        <img src="<?= base_url('images/whatsapp.png'); ?>" alt="WhatsApp">
-                        Pesan Lewat WA
+                      <img src=<?= base_url('asset/image/waputih.svg') ?> alt="WhatsApp"> Pesan Lewat WA
                     </a>
                     <a href="#" class="btn-order instagram">
-                        <img src="<?= base_url('images/instagram.png'); ?>" alt="Instagram">
-                        Pesan Lewat DM
+                      <img src="<?= base_url('asset/image/igputih.svg') ?>" alt="Instagram"> Pesan Lewat DM
                     </a>
                     <a href="#" class="btn-order shopee">
-                        <img src="<?= base_url('images/shopee.png'); ?>" alt="Shopee">
-                        Pesan Lewat Shopee
+                      <img src=<?= base_url('asset/image/shopeeputih.svg') ?> alt="Shopee"> Pesan Lewat Shopee
                     </a>
+                  </div>
                 </div>
             </div>
-        </div>
-</di>
+
 
         <!-- Recommendations -->
         
@@ -164,6 +168,11 @@
     <!-- Footer Bottom -->
 
 </footer>
-    
+<script>
+  function changeImage(thumbnail) {
+    let mainImage = document.getElementById("mainImage");
+    mainImage.src = thumbnail.src;
+  }
+</script>
 </body>
 </html>
